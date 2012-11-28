@@ -1,4 +1,6 @@
 #!/usr/bin/python3 -d
+#	pree.py
+#	This is my Python3/PyQt4 rewrite of Kodos by Phil Schwartz ( http://kodos.sourceforge.net/ )
 
 import sys
 import re
@@ -27,6 +29,7 @@ class MyForm(QtGui.QMainWindow):
     self.ui.tedReg.textChanged.connect(self.regChange)
     self.ui.tedString.textChanged.connect(self.strChange)
     self.ui.actionShow_Variables.activated.connect(self.showVariables)
+    self.ui.actionExit.activated.connect(self.close)
     
     self.regex = ""
     self.matchstring = ""

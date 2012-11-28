@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'mainWindow.ui'
+# Form implementation generated from reading ui file './modules/mainWindow.ui'
 #
-# Created: Wed Nov 28 15:29:04 2012
+# Created: Wed Nov 28 16:06:48 2012
 #      by: PyQt4 UI code generator 4.8.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -111,7 +111,19 @@ class Ui_MainWindow(object):
         self.actionShow_Variables = QtGui.QAction(MainWindow)
         self.actionShow_Variables.setText(QtGui.QApplication.translate("MainWindow", "Show Variables", None, QtGui.QApplication.UnicodeUTF8))
         self.actionShow_Variables.setObjectName(_fromUtf8("actionShow_Variables"))
+        self.actionExit = QtGui.QAction(MainWindow)
+        self.actionExit.setText(QtGui.QApplication.translate("MainWindow", "Exit", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionExit.setObjectName(_fromUtf8("actionExit"))
+        self.actionSave = QtGui.QAction(MainWindow)
+        self.actionSave.setText(QtGui.QApplication.translate("MainWindow", "Save", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionSave.setObjectName(_fromUtf8("actionSave"))
+        self.actionOpen = QtGui.QAction(MainWindow)
+        self.actionOpen.setText(QtGui.QApplication.translate("MainWindow", "Open", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionOpen.setObjectName(_fromUtf8("actionOpen"))
         self.menuFile.addAction(self.actionShow_Variables)
+        self.menuFile.addAction(self.actionOpen)
+        self.menuFile.addAction(self.actionSave)
+        self.menuFile.addAction(self.actionExit)
         self.menuHelp.addAction(self.actionRegex_Reference_Guide)
         self.menuHelp.addAction(self.actionRegex_Library)
         self.menuHelp.addAction(self.actionPython_Regex_Help)
