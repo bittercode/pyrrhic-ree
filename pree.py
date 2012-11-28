@@ -1,6 +1,7 @@
 #!/usr/bin/python3 -d
 #	pree.py
 #	This is my Python3/PyQt4 rewrite of Kodos by Phil Schwartz ( http://kodos.sourceforge.net/ )
+#
 
 import sys
 import re
