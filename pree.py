@@ -14,7 +14,7 @@ except:
 import os.path
 from distutils.sysconfig import get_python_lib
 
-sys.path.insert(0, os.path.join(get_python_lib(), "pyrrhic-ree"))
+sys.path.insert(0, os.path.join(get_python_lib(), "pyrrhicree"))
 
 from modules.mainWindow import *
 
