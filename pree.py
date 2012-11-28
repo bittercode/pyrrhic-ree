@@ -1,9 +1,23 @@
-#!/usr/bin/python -d
+#!/usr/bin/python3 -d
 
 import sys
 import re
-from PySide import QtCore, QtGui
-from mainWindow import Ui_MainWindow
+import os
+
+
+try:
+    from PyQt4 import *
+except:
+    print( "Could not locate the PyQt4 module.")
+    sys.exit(1)
+
+import os.path
+from distutils.sysconfig import get_python_lib
+
+sys.path.insert(0, os.path.join(get_python_lib(), "pyrrhic-ree"))
+
+from modules.mainWindow import *
+
 
 class MyForm(QtGui.QMainWindow):
   def __init__(self, parent=None):
