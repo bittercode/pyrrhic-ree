@@ -31,10 +31,39 @@ class MyForm(QtGui.QMainWindow):
     self.ui.tedString.textChanged.connect(self.strChange)
     self.ui.actionShow_Variables.activated.connect(self.showVariables)
     self.ui.actionExit.activated.connect(self.close)
+    self.ui.chkCase.toggled.connect(self.checkChange)
+    self.ui.chkMulti.toggled.connect(self.checkChange)
+    self.ui.chkDot.toggled.connect(self.checkChange)
+    self.ui.chkVerbose.toggled.connect(self.checkChange)
+    self.ui.chkLocale.toggled.connect(self.checkChange)
+    self.ui.chkUnicode.toggled.connect(self.checkChange)
     
     self.regex = ""
     self.matchstring = ""
     self.flags = 0
+  
+  def checkChange(self):
+        self.flags = 0
+        
+        if self.ui.chkCase.isChecked():
+            self.flags = self.flags + re.IGNORECASE
+
+        if self.ui.chkMulti.isChecked():
+            self.flags = self.flags + re.MULTILINE
+
+        if self.ui.chkDot.isChecked():
+            self.flags = self.flags + re.DOTALL
+
+        if self.ui.chkVerbose.isChecked():
+            self.flags = self.flags + re.VERBOSE
+
+        if self.ui.chkLocale.isChecked():
+            self.flags = self.flags + re.LOCALE
+
+        if self.ui.chkUnicode.isChecked():
+            self.flags = self.flags + re.UNICODE
+
+        self.process_regex()
   
   def regChange(self):
     try:
