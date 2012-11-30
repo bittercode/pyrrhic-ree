@@ -17,7 +17,7 @@ except:
 import os.path
 from distutils.sysconfig import get_python_lib
 
-sys.path.insert(0, os.path.join(get_python_lib(), "pyrrhicree"))
+sys.path.insert(0, os.path.join(get_python_lib(), "pree"))
 
 from modules.mainWindow import *
 
@@ -36,7 +36,7 @@ class MyForm(QtGui.QMainWindow):
     self.ui.chkDot.toggled.connect(self.checkChange)
     self.ui.chkVerbose.toggled.connect(self.checkChange)
     self.ui.chkLocale.toggled.connect(self.checkChange)
-    self.ui.chkUnicode.toggled.connect(self.checkChange)
+    self.ui.chkAscii.toggled.connect(self.checkChange)
     
     self.regex = ""
     self.matchstring = ""
@@ -60,8 +60,8 @@ class MyForm(QtGui.QMainWindow):
         if self.ui.chkLocale.isChecked():
             self.flags = self.flags + re.LOCALE
 
-        if self.ui.chkUnicode.isChecked():
-            self.flags = self.flags + re.UNICODE
+        if self.ui.chkAscii.isChecked():
+            self.flags = self.flags + re.ASCII
 
         self.process_regex()
   
@@ -87,15 +87,16 @@ class MyForm(QtGui.QMainWindow):
     allmatches = compile_obj.findall(self.matchstring)
     match_obj = compile_obj.search(self.matchstring)
     if match_obj is None:
-      self.ui.tedMatch.setText("No Match")
+      self.ui.txtMatch.setPlainText("No Match")
     else:
-      self.ui.tedMatch.setText(match_obj.group())
+      self.ui.txtMatch.setPlainText(match_obj.group())
       
       
   def showVariables(self):
     message = "Regex: " + self.regex + "\nString: " + self.matchstring
-    self.ui.tedMatch.setText(message)
+    self.ui.txtMatch.setPlainText(message)
     
+
     
 if __name__ == "__main__":
   app = QtGui.QApplication(sys.argv)

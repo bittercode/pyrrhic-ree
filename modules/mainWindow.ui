@@ -41,6 +41,9 @@
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QCheckBox" name="chkCase">
+         <property name="toolTip">
+          <string>Perform case-insensitive matching</string>
+         </property>
          <property name="text">
           <string>Ignore Case</string>
          </property>
@@ -48,6 +51,9 @@
        </item>
        <item>
         <widget class="QCheckBox" name="chkMulti">
+         <property name="toolTip">
+          <string>^ matches at the beginning of the string and at the beginning of each line within the string, immediately following each newline. Similarly, the $ metacharacter matches either at the end of the string and at the end of each line (immediately preceding each newline).</string>
+         </property>
          <property name="text">
           <string>Multi Line</string>
          </property>
@@ -55,6 +61,9 @@
        </item>
        <item>
         <widget class="QCheckBox" name="chkDot">
+         <property name="toolTip">
+          <string>Makes the '.' special character match any character at all, including a newline; without this flag, '.' will match anything except a newline.</string>
+         </property>
          <property name="text">
           <string>Dot All</string>
          </property>
@@ -62,6 +71,9 @@
        </item>
        <item>
         <widget class="QCheckBox" name="chkVerbose">
+         <property name="toolTip">
+          <string>This flag allows you to write regular expressions that are more readable by granting you more flexibility in how you can format them. When this flag has been specified, whitespace within the RE string is ignored, except when the whitespace is in a character class or preceded by an unescaped backslash; this lets you organize and indent the RE more clearly. This flag also lets you put comments within a RE that will be ignored by the engine; comments are marked by a '#' that’s neither in a character class or preceded by an unescaped backslash.</string>
+         </property>
          <property name="text">
           <string>Verbose</string>
          </property>
@@ -69,15 +81,21 @@
        </item>
        <item>
         <widget class="QCheckBox" name="chkLocale">
+         <property name="toolTip">
+          <string>Make w, W, b, and B, dependent on the current locale.</string>
+         </property>
          <property name="text">
           <string>Locale</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="chkUnicode">
+        <widget class="QCheckBox" name="chkAscii">
+         <property name="toolTip">
+          <string>Make w, W, b, B, s and S perform ASCII-only matching instead of full Unicode matching. This is only meaningful for Unicode patterns, and is ignored for byte patterns.</string>
+         </property>
          <property name="text">
-          <string>Unicode</string>
+          <string>Ascii</string>
          </property>
         </widget>
        </item>
@@ -97,19 +115,30 @@
      </widget>
     </item>
     <item>
-     <widget class="QGroupBox" name="gbResults">
-      <property name="title">
-       <string>Match</string>
+     <widget class="QTabWidget" name="tabResults">
+      <property name="currentIndex">
+       <number>0</number>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <item>
-        <widget class="QTextEdit" name="tedMatch">
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <widget class="QWidget" name="tabMatch">
+       <attribute name="title">
+        <string>Match</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QTextBrowser" name="txtMatch"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabMatchAll">
+       <attribute name="title">
+        <string>Match All</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QTextBrowser" name="txtMatchAll"/>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
