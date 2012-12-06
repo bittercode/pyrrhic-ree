@@ -4,7 +4,7 @@
 #       A lot of the code is the same - probably the biggest difference other than using new libraries,
 #       is that I don't use custom controls and do use html in the qtextbrowser objects for formatting
 #       and creating the group table, etc. I could never have written it without having the original
-#       as a reference.
+#       as a reference.git
 
 import sys
 import re
@@ -44,6 +44,8 @@ class MyForm(QtGui.QMainWindow):
     self.regex = ""
     self.matchstring = ""
     self.flags = 0
+    self.debug = False
+    self.group_tuples = None
     
     self.highlightColor = r'#7FFF00'
     self.highlightStart = r'<span style="background-color: '+ self.highlightColor + r'">'
@@ -90,11 +92,22 @@ class MyForm(QtGui.QMainWindow):
       self.matchstring = unicode(self.ui.tedString.text())
       
     self.process_regex()
+    
 
-  def populate_group_textbrowser(self):
+  # The tuple holds two things - the group name and the contents of the match and I can count rows
+  def populate_group_textbrowser(self,tuples):
     self.ui.tebGroup.clear()
-    testtext = r'<table border=1><tr><td>row1, cell1</td><td>row1,cell2</tr><tr><td>row2,cell1</td><td>row2,cell2</td></tr></table>'
-    self.ui.tebGroup.setHtml(testtext)
+    result = ""
+    row = 1
+    htmtable = r'<table border=1>'
+    
+    for t in tuples:
+      trow = r'<tr><td>' + row + r'</td><td>' + t[1] + r'</td><td>' + t[2] + r'</td></tr>'
+      result = result + trow
+      row = row + 1
+      
+      
+    self.ui.tebGroup.setHtml(result)
     
   def populate_matchAll_textbrowser(self, spans):
     self.ui.tebMatchAll.clear()
@@ -131,7 +144,52 @@ class MyForm(QtGui.QMainWindow):
     spans = self.findAllSpans(compile_obj)
     #self.populate_matchAll_textbrowser(spans)
     self.populate_matchAll_textbrowser(spans)
-    self.populate_group_textbrowser()
+
+
+    #This is where I am at - getting the groups to work
+    # I need to figure out match_num and match_index so that I can go through the groups
+    # Though I may not need to be that indirect. This is where to pick up.
+    
+    match_index = self.match_num - 1 
+        
+    if match_index > 0:
+      for i in range(match_index):
+        match_obj = compile_obj.search(self.matchstring,match_obj.end())
+                
+    self.populate_match_textbrowser(match_obj.start(), match_obj.end())
+
+    self.group_tuples = []
+    
+    
+    if match_obj.groups():
+      #print match_obj.groups()
+      s = "<font color=blue>"
+      num_groups = len(match_obj.groups())
+
+      group_nums = {}
+      if compile_obj.groupindex:
+        keys = compile_obj.groupindex.keys()
+        for key in keys:
+          group_nums[compile_obj.groupindex[key]] = key
+
+      if self.debug:
+        print( "group_nums:", group_nums)                         
+        print( "grp index: ", compile_obj.groupindex)
+        print( "groups:", match_obj.groups())
+        print( "span: ", match_obj.span())
+
+      # create group_tuple in the form: (group #, group name, group matches)
+      g = allmatches[match_index]
+      if type(g) == types.TupleType:
+        for i in range(len(g)):
+          group_tuple = (i+1, group_nums.get(i+1, ""), g[i])
+          self.group_tuples.append(group_tuple)
+        else:
+          self.group_tuples.append( (1, group_nums.get(1, ""), g) )
+                        
+      #print group_tuples
+      self.populate_group_textbrowser(self.group_tuples)
+
 
   def findAllSpans(self, compile_obj):
     spans = []
@@ -150,7 +208,10 @@ class MyForm(QtGui.QMainWindow):
             
       last_span = span
       match_obj = compile_obj.search(self.matchstring, end)
-    print(spans)
+    
+    if self.debug:
+      print("FA Spans: ", spans)
+    
     return spans
 
   def populate_match_textbrowser(self, startpos, endpos):
