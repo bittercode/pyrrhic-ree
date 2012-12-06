@@ -22,10 +22,6 @@ sys.path.insert(0, os.path.join(get_python_lib(), "pree"))
 from modules.mainWindow import *
 
 
-# colors for normal & examination mode
-QCOLOR_WHITE  = QtCore.Qt.white     # normal
-QCOLOR_YELLOW = QtGui.QColor(255,255,127)  # examine
-
 class MyForm(QtGui.QMainWindow):
   def __init__(self, parent=None):
     super(MyForm, self).__init__(parent)
@@ -45,6 +41,8 @@ class MyForm(QtGui.QMainWindow):
     self.regex = ""
     self.matchstring = ""
     self.flags = 0
+    
+    self.texttry = ""
   
   def checkChange(self):
       self.flags = 0
@@ -87,23 +85,10 @@ class MyForm(QtGui.QMainWindow):
       self.matchstring = unicode(self.ui.tedString.text())
       
     self.process_regex()
-    
-  def colorize_strings(self, strings, widget, cursorOffset=0):
-        widget.clear()
 
-        colors = (QtCore.Qt.black,QtCore.Qt.blue )
-        i = 0
-        pos = widget.getCursorPosition()
-        for s in strings:
-            widget.setColor(colors[i%2])            
-            widget.insert(s)
-            if i == cursorOffset: pos = widget.getCursorPosition()
-            i += 1
-            
-        widget.setCursorPosition(pos[0], pos[1])
     
   def populate_matchAll_textbrowser(self, spans):
-    self.ui.tedMatchAll.clear()
+    self.ui.tebMatchAll.clear()
     if not spans: return
 
     idx = 0
@@ -124,9 +109,9 @@ class MyForm(QtGui.QMainWindow):
     
     #I lifted the line below from the colorize function        
     #for s in strings:
-    #    self.ui.tedMatchAll.append(s)
-        
-    self.colorize_strings(strings, self.ui.tedMatchAll)
+    #    self.ui.tebMatchAll.append(s)
+    print(strings)    
+    self.colorize_strings(strings, self.ui.tebMatchAll)
     
     
   def process_regex(self):
@@ -135,12 +120,15 @@ class MyForm(QtGui.QMainWindow):
     
     match_obj = compile_obj.search(self.matchstring)
     if match_obj is None:
-      self.ui.txtMatch.setPlainText("No Match")
+      self.ui.tebMatch.setPlainText("No Match")
     else:
-      self.ui.tedMatch.setPlainText(match_obj.group())
+      self.populate_match_textbrowser(match_obj.start(), match_obj.end())
       
     spans = self.findAllSpans(compile_obj)
-    self.populate_matchAll_textbrowser(spans)  
+    #self.populate_matchAll_textbrowser(spans)
+    self.texttry = self.matchstring
+    self.texttry = r'<span style="background-color: #7FFF00">' + self.texttry + r'</span>'
+    self.ui.tebMatchAll.setHtml(self.texttry)
 
   def findAllSpans(self, compile_obj):
     spans = []
@@ -162,10 +150,25 @@ class MyForm(QtGui.QMainWindow):
 
     return spans
 
- 
+  def populate_match_textbrowser(self, startpos, endpos):
+      pre = post = match = ""
+        
+      match = self.matchstring[startpos:endpos]
+
+      # prepend the beginning that didn't match
+      if startpos > 0:
+        pre = self.matchstring[0:startpos]
+            
+      # append the end that didn't match
+      if endpos < len(self.matchstring):
+        post = self.matchstring[endpos:]
+            
+      self.ui.tebMatch.setHtml(pre + r'<span style="background-color: #7FFF00">' + match + r'</span>' + post)
+        
+        
   def showVariables(self):
-    message = "Regex: " + self.regex + "\nString: " + self.matchstring
-    self.ui.tedMatch.setPlainText(message)
+    message = "Regex: " + self.regex + "\nString: " + self.matchstring + "\nMA: " + self.texttry
+    self.ui.tebMatch.setPlainText(message)
     
 
     

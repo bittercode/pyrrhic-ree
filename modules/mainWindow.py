@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './modules/mainWindow.ui'
 #
-# Created: Fri Nov 30 13:09:36 2012
+# Created: Thu Dec  6 12:25:46 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -68,19 +68,17 @@ class Ui_MainWindow(object):
         self.tabMatch.setObjectName(_fromUtf8("tabMatch"))
         self.horizontalLayout_4 = QtGui.QHBoxLayout(self.tabMatch)
         self.horizontalLayout_4.setObjectName(_fromUtf8("horizontalLayout_4"))
-        self.tedMatch = QtGui.QTextEdit(self.tabMatch)
-        self.tedMatch.setReadOnly(True)
-        self.tedMatch.setObjectName(_fromUtf8("tedMatch"))
-        self.horizontalLayout_4.addWidget(self.tedMatch)
+        self.tebMatch = QtGui.QTextBrowser(self.tabMatch)
+        self.tebMatch.setObjectName(_fromUtf8("tebMatch"))
+        self.horizontalLayout_4.addWidget(self.tebMatch)
         self.tabResults.addTab(self.tabMatch, _fromUtf8(""))
         self.tabMatchAll = QtGui.QWidget()
         self.tabMatchAll.setObjectName(_fromUtf8("tabMatchAll"))
         self.horizontalLayout_5 = QtGui.QHBoxLayout(self.tabMatchAll)
         self.horizontalLayout_5.setObjectName(_fromUtf8("horizontalLayout_5"))
-        self.tedMatchAll = QtGui.QTextEdit(self.tabMatchAll)
-        self.tedMatchAll.setReadOnly(True)
-        self.tedMatchAll.setObjectName(_fromUtf8("tedMatchAll"))
-        self.horizontalLayout_5.addWidget(self.tedMatchAll)
+        self.tebMatchAll = QtGui.QTextBrowser(self.tabMatchAll)
+        self.tebMatchAll.setObjectName(_fromUtf8("tebMatchAll"))
+        self.horizontalLayout_5.addWidget(self.tebMatchAll)
         self.tabResults.addTab(self.tabMatchAll, _fromUtf8(""))
         self.verticalLayout.addWidget(self.tabResults)
         MainWindow.setCentralWidget(self.centralwidget)

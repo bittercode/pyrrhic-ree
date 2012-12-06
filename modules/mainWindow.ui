@@ -125,11 +125,7 @@
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
-         <widget class="QTextEdit" name="tedMatch">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
+         <widget class="QTextBrowser" name="tebMatch"/>
         </item>
        </layout>
       </widget>
@@ -139,11 +135,7 @@
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
-         <widget class="QTextEdit" name="tedMatchAll">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
+         <widget class="QTextBrowser" name="tebMatchAll"/>
         </item>
        </layout>
       </widget>
