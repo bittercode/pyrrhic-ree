@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './modules/mainWindow.ui'
 #
-# Created: Thu Dec  6 12:25:46 2012
+# Created: Thu Dec  6 13:50:58 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -80,6 +80,14 @@ class Ui_MainWindow(object):
         self.tebMatchAll.setObjectName(_fromUtf8("tebMatchAll"))
         self.horizontalLayout_5.addWidget(self.tebMatchAll)
         self.tabResults.addTab(self.tabMatchAll, _fromUtf8(""))
+        self.tabGroup = QtGui.QWidget()
+        self.tabGroup.setObjectName(_fromUtf8("tabGroup"))
+        self.horizontalLayout_6 = QtGui.QHBoxLayout(self.tabGroup)
+        self.horizontalLayout_6.setObjectName(_fromUtf8("horizontalLayout_6"))
+        self.tebGroup = QtGui.QTextBrowser(self.tabGroup)
+        self.tebGroup.setObjectName(_fromUtf8("tebGroup"))
+        self.horizontalLayout_6.addWidget(self.tebGroup)
+        self.tabResults.addTab(self.tabGroup, _fromUtf8(""))
         self.verticalLayout.addWidget(self.tabResults)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
@@ -122,7 +130,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabResults.setCurrentIndex(0)
+        self.tabResults.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -142,8 +150,9 @@ class Ui_MainWindow(object):
         self.chkAscii.setToolTip(QtGui.QApplication.translate("MainWindow", "Make w, W, b, B, s and S perform ASCII-only matching instead of full Unicode matching. This is only meaningful for Unicode patterns, and is ignored for byte patterns.", None, QtGui.QApplication.UnicodeUTF8))
         self.chkAscii.setText(QtGui.QApplication.translate("MainWindow", "Ascii", None, QtGui.QApplication.UnicodeUTF8))
         self.gbString.setTitle(QtGui.QApplication.translate("MainWindow", "Search String", None, QtGui.QApplication.UnicodeUTF8))
-        self.tabResults.setTabText(self.tabResults.indexOf(self.tabMatch), QtGui.QApplication.translate("MainWindow", "Match", None, QtGui.QApplication.UnicodeUTF8))
-        self.tabResults.setTabText(self.tabResults.indexOf(self.tabMatchAll), QtGui.QApplication.translate("MainWindow", "Match All", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabResults.setTabText(self.tabResults.indexOf(self.tabMatch), QtGui.QApplication.translate("MainWindow", "Search", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabResults.setTabText(self.tabResults.indexOf(self.tabMatchAll), QtGui.QApplication.translate("MainWindow", "Find All", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabResults.setTabText(self.tabResults.indexOf(self.tabGroup), QtGui.QApplication.translate("MainWindow", "Group", None, QtGui.QApplication.UnicodeUTF8))
         self.menuFile.setTitle(QtGui.QApplication.translate("MainWindow", "File", None, QtGui.QApplication.UnicodeUTF8))
         self.menuHelp.setTitle(QtGui.QApplication.translate("MainWindow", "Help", None, QtGui.QApplication.UnicodeUTF8))
         self.actionRegex_Reference_Guide.setText(QtGui.QApplication.translate("MainWindow", "Regex Reference Guide", None, QtGui.QApplication.UnicodeUTF8))

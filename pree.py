@@ -1,7 +1,10 @@
 #!/usr/bin/python3 -d
 #	pree.py
 #	This is my Python3/PyQt4 rewrite of Kodos by Phil Schwartz ( http://kodos.sourceforge.net/ )
-#       
+#       A lot of the code is the same - probably the biggest difference other than using new libraries,
+#       is that I don't use custom controls and do use html in the qtextbrowser objects for formatting
+#       and creating the group table, etc. I could never have written it without having the original
+#       as a reference.
 
 import sys
 import re
@@ -42,7 +45,9 @@ class MyForm(QtGui.QMainWindow):
     self.matchstring = ""
     self.flags = 0
     
-    self.texttry = ""
+    self.highlightColor = r'#7FFF00'
+    self.highlightStart = r'<span style="background-color: '+ self.highlightColor + r'">'
+    self.highlightEnd = r'</span>'
   
   def checkChange(self):
       self.flags = 0
@@ -86,6 +91,10 @@ class MyForm(QtGui.QMainWindow):
       
     self.process_regex()
 
+  def populate_group_textbrowser(self):
+    self.ui.tebGroup.clear()
+    testtext = r'<table border=1><tr><td>row1, cell1</td><td>row1,cell2</tr><tr><td>row2,cell1</td><td>row2,cell2</td></tr></table>'
+    self.ui.tebGroup.setHtml(testtext)
     
   def populate_matchAll_textbrowser(self, spans):
     self.ui.tebMatchAll.clear()
@@ -98,9 +107,9 @@ class MyForm(QtGui.QMainWindow):
     
     for span in spans:
       if span[0] != 0:
-        result = text[idx:span[0]] + r'<span style="background-color: #7FFF00">' + text[span[0]:span[1]] + r'</span>'
+        result = text[idx:span[0]] + self.highlightStart + text[span[0]:span[1]] + self.highlightEnd
       else:
-        result = r'<span style="background-color: #7FFF00">' + text[span[0]:span[1]] + r'</span>'
+        result = self.highlightStart + text[span[0]:span[1]] + self.highlightEnd
                 
       idx = span[1]
       disp = disp + result
@@ -122,6 +131,7 @@ class MyForm(QtGui.QMainWindow):
     spans = self.findAllSpans(compile_obj)
     #self.populate_matchAll_textbrowser(spans)
     self.populate_matchAll_textbrowser(spans)
+    self.populate_group_textbrowser()
 
   def findAllSpans(self, compile_obj):
     spans = []
@@ -156,7 +166,7 @@ class MyForm(QtGui.QMainWindow):
       if endpos < len(self.matchstring):
         post = self.matchstring[endpos:]
             
-      self.ui.tebMatch.setHtml(pre + r'<span style="background-color: #7FFF00">' + match + r'</span>' + post)
+      self.ui.tebMatch.setHtml(pre + self.highlightStart + match + self.highlightEnd + post)
         
         
   def showVariables(self):

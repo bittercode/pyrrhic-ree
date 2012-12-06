@@ -117,11 +117,11 @@
     <item>
      <widget class="QTabWidget" name="tabResults">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tabMatch">
        <attribute name="title">
-        <string>Match</string>
+        <string>Search</string>
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
@@ -131,11 +131,21 @@
       </widget>
       <widget class="QWidget" name="tabMatchAll">
        <attribute name="title">
-        <string>Match All</string>
+        <string>Find All</string>
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
          <widget class="QTextBrowser" name="tebMatchAll"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabGroup">
+       <attribute name="title">
+        <string>Group</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QTextBrowser" name="tebGroup"/>
         </item>
        </layout>
       </widget>
