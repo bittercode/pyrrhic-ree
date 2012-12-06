@@ -92,26 +92,21 @@ class MyForm(QtGui.QMainWindow):
     if not spans: return
 
     idx = 0
+    disp = ""
+    result = ""
     text = self.matchstring
-    strings = []
+    
     for span in spans:
       if span[0] != 0:
-        s = text[idx:span[0]]
+        result = text[idx:span[0]] + r'<span style="background-color: #7FFF00">' + text[span[0]:span[1]] + r'</span>'
       else:
-        s = ""
+        result = r'<span style="background-color: #7FFF00">' + text[span[0]:span[1]] + r'</span>'
                 
       idx = span[1]
-      strings.append(s)
-      strings.append(text[span[0]:span[1]])
-
-      if 0 <= idx <= len(text): 
-        strings.append(text[span[1]:])
+      disp = disp + result
+    disp = disp + text[idx:]
     
-    #I lifted the line below from the colorize function        
-    #for s in strings:
-    #    self.ui.tebMatchAll.append(s)
-    print(strings)    
-    self.colorize_strings(strings, self.ui.tebMatchAll)
+    self.ui.tebMatchAll.setHtml(disp)
     
     
   def process_regex(self):
@@ -126,9 +121,7 @@ class MyForm(QtGui.QMainWindow):
       
     spans = self.findAllSpans(compile_obj)
     #self.populate_matchAll_textbrowser(spans)
-    self.texttry = self.matchstring
-    self.texttry = r'<span style="background-color: #7FFF00">' + self.texttry + r'</span>'
-    self.ui.tebMatchAll.setHtml(self.texttry)
+    self.populate_matchAll_textbrowser(spans)
 
   def findAllSpans(self, compile_obj):
     spans = []
@@ -147,7 +140,7 @@ class MyForm(QtGui.QMainWindow):
             
       last_span = span
       match_obj = compile_obj.search(self.matchstring, end)
-
+    print(spans)
     return spans
 
   def populate_match_textbrowser(self, startpos, endpos):
