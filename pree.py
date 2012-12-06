@@ -9,7 +9,7 @@
 import sys
 import re
 import os
-
+import types
 
 try:
     from PyQt4 import QtGui, QtCore
@@ -145,18 +145,19 @@ class MyForm(QtGui.QMainWindow):
     #self.populate_matchAll_textbrowser(spans)
     self.populate_matchAll_textbrowser(spans)
 
-
+    self.populate_match_textbrowser(match_obj.start(), match_obj.end())
+    
     #This is where I am at - getting the groups to work
     # I need to figure out match_num and match_index so that I can go through the groups
     # Though I may not need to be that indirect. This is where to pick up.
     
-    match_index = self.match_num - 1 
+    match_index = len(allmatches) - 1 
         
     if match_index > 0:
       for i in range(match_index):
         match_obj = compile_obj.search(self.matchstring,match_obj.end())
                 
-    self.populate_match_textbrowser(match_obj.start(), match_obj.end())
+    
 
     self.group_tuples = []
     
