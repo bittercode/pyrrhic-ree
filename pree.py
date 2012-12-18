@@ -22,8 +22,18 @@ from distutils.sysconfig import get_python_lib
 
 sys.path.insert(0, os.path.join(get_python_lib(), "pree"))
 
+
 from modules.mainWindow import *
 
+# regex to find special flags which must begin at beginning of line
+# or after some spaces
+EMBEDDED_FLAGS = r"^ *\(\?(?P<flags>[aiLmsx]*)\)"
+
+###################################################################
+#
+# The Form class that builds the form and inserts logic
+#
+###################################################################
 
 class MyForm(QtGui.QMainWindow):
   def __init__(self, parent=None):
@@ -46,6 +56,7 @@ class MyForm(QtGui.QMainWindow):
     self.flags = 0
     self.debug = False
     self.group_tuples = None
+    self.embedded_flags_obj = re.compile(EMBEDDED_FLAGS)
     
     self.highlightColor = r'#7FFF00'
     self.highlightStart = r'<span style="background-color: '+ self.highlightColor + r'">'
@@ -130,8 +141,19 @@ class MyForm(QtGui.QMainWindow):
     
     self.ui.tebMatchAll.setHtml(disp)
     
+  
+  def clear_results(self):
+    self.ui.tebMatch.setHtml("")
+    self.ui.tebMatchAll.setHtml("")
+    self.ui.statusbar.clearMessage()
     
   def process_regex(self):
+    if not self.regex or not self.matchstring:
+        self.clear_results()
+        return
+    
+    self.process_embedded_flags(self.regex)
+    
     compile_obj = re.compile(self.regex, self.flags)
     allmatches = compile_obj.findall(self.matchstring)
     
@@ -143,23 +165,31 @@ class MyForm(QtGui.QMainWindow):
     match_obj = compile_obj.search(self.matchstring)
     if match_obj is None:
       self.ui.tebMatch.setPlainText("No Match")
+      self.ui.tebMatchAll.setPlainText("No Match")
+      self.ui.statusbar.showMessage("No Match",0)
     else:
+      #This is the single match
       self.populate_match_textbrowser(match_obj.start(), match_obj.end())
       
     spans = self.findAllSpans(compile_obj)
-    #self.populate_matchAll_textbrowser(spans)
+    #This will fill in all matches
     self.populate_matchAll_textbrowser(spans)
-
-    self.populate_match_textbrowser(match_obj.start(), match_obj.end())
     
+    #This is the start of groups and right now it goes to the end of process_regex
+    #It works right now as long as groups are not named - I think
+    print(compile_obj.groupindex)
+    
+    if match_obj.groups():
+      num_groups = compile_obj.groups
+      
         
-    if match_index > 0:
-      match_obj = compile_obj.search(self.matchstring)
-     # print('index: ' + match_obj.groups())
-      print(match_obj.groups(1))
-      print(match_obj.groups(2))
-      print(match_obj.groups(3))
-      print(match_obj.groups(4))
+      for m in re.finditer(self.regex,self.matchstring):
+        mc =1
+        i=1
+        while i <= num_groups:
+          print('MatchNum:' + str(mc) + ' Group:' + str(i) + ' String:' +str(m.group(i)))
+          i=i+1
+        mc = mc +1
       
   def findAllSpans(self, compile_obj):
     spans = []
@@ -204,7 +234,35 @@ class MyForm(QtGui.QMainWindow):
     message = "Regex: " + self.regex + "\nString: " + self.matchstring + "\nMA: " + self.texttry
     self.ui.tebMatch.setPlainText(message)
     
+  def process_embedded_flags(self, regex):
+    # determine if the regex contains embedded regex flags.
+    # if not, return 0 -- inidicating that the regex has no embedded flags
+    # if it does, set the appropriate checkboxes on the UI to reflect the flags that are embedded
+    #   and return 1 to indicate that the string has embedded flags
+    match = self.embedded_flags_obj.match(regex)
+    if not match:
+      self.embedded_flags = ""
+      self.regex_embedded_flags_removed = regex
+      return 0
 
+    self.embedded_flags = match.group('flags')
+    self.regex_embedded_flags_removed = self.embedded_flags_obj.sub("", regex, 1)
+        
+    for flag in self.embedded_flags:
+      if flag == 'i':
+        self.ui.chkCase.setChecked(1)
+      elif flag == 'L':
+        self.ui.chkLocale.setChecked(1)
+      elif flag == 'm':
+        self.ui.chkMulti.setChecked(1)
+      elif flag == 's':
+        self.ui.chkDot.setChecked(1)
+      elif flag == 'a':
+        self.ui.chkAscii.setChecked(1)
+      elif flag == 'x':
+        self.ui.chkVerbose.setChecked(1)
+
+    return 1
     
 if __name__ == "__main__":
   app = QtGui.QApplication(sys.argv)
