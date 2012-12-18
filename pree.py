@@ -181,14 +181,22 @@ class MyForm(QtGui.QMainWindow):
     
     if match_obj.groups():
       num_groups = compile_obj.groups
+      mc = 1
+      gi = False
       
+      if compile_obj.groupindex:
+        gi = True
+        keys = compile_obj.groupindex.keys()
         
       for m in re.finditer(self.regex,self.matchstring):
-        mc =1
         i=1
-        while i <= num_groups:
-          print('MatchNum:' + str(mc) + ' Group:' + str(i) + ' String:' +str(m.group(i)))
-          i=i+1
+        if gi:
+            for k in keys:
+                print('Label:', k, ' String:', m.group(k))
+        else:
+            while i <= num_groups:
+                print('MatchNum:' + str(mc) + ' Group:' + str(i) + ' String:' +str(m.group(i)))
+                i=i+1
         mc = mc +1
       
   def findAllSpans(self, compile_obj):
