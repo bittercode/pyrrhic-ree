@@ -108,12 +108,15 @@ class MyForm(QtGui.QMainWindow):
   # The tuple holds two things - the group name and the contents of the match and I can count rows
   def populate_group_textbrowser(self,tuples):
     self.ui.tebGroup.clear()
-    result = ""
     row = 1
-    htmtable = r'<table border=1>'
+    result = r'<table border=1 cellpadding=7 ><tr><th>Match Number</th><th>Group Number</th><th>Match Name</th><th>Match</th></tr>'
     
     for t in tuples:
-      trow = r'<tr><td>' + row + r'</td><td>' + t[1] + r'</td><td>' + t[2] + r'</td></tr>'
+      if t[0]%2:
+        trow_start = r'<tr style="background-color:lightgreen;">'
+      else:
+        trow_start = r'<tr>'
+      trow = trow_start + r'<td>' + str(t[0]) + r'</td><td>' + str(t[1]) + r'</td><td>' + str(t[2]) +r'</td><td>' + str(t[3]) + r'</td></tr>'
       result = result + trow
       row = row + 1
       
@@ -140,11 +143,6 @@ class MyForm(QtGui.QMainWindow):
     disp = disp + text[idx:]
     
     self.ui.tebMatchAll.setHtml(disp)
-  
-  #If processing the regex found groups we turn them into a table here  
-  def populate_group_table(self, tuples):
-    for t in tuples:
-        print(t)
         
         
   def clear_results(self):
@@ -199,19 +197,19 @@ class MyForm(QtGui.QMainWindow):
             for key in keys:
                 group_nums[compile_obj.groupindex[key]] = key
         
-        #This part has to be fixed - it is designed to handle 1 group at a time
-        #and it changes each time the user switches the group number - I want
-        #to show them all.
+        #Here I build a tuple of tuples - with each group match
+        #it is match number, group number, name and then the match
         for x in range(match_index):
             g = allmatches[x]
             if isinstance(g,tuple):
                 for i in range(len(g)):
-                    group_tuple = (i+1, group_nums.get(i+1, ""), g[i])
+                    group_tuple = (x+1,i+1, group_nums.get(i+1, ""), g[i])
                     group_tuples.append(group_tuple)
             else:
-                group_tuples.append( (1, group_nums.get(1, ""), g) )
+                group_tuples.append( (x+1,1, group_nums.get(1, ""), g) )
                 
-    self.populate_group_table(self.group_tuples)
+    #print(group_tuples)
+    self.populate_group_textbrowser(group_tuples)
       
   def findAllSpans(self, compile_obj):
     spans = []
