@@ -140,8 +140,13 @@ class MyForm(QtGui.QMainWindow):
     disp = disp + text[idx:]
     
     self.ui.tebMatchAll.setHtml(disp)
-    
   
+  #If processing the regex found groups we turn them into a table here  
+  def populate_group_table(self, tuples):
+    for t in tuples:
+        print(t)
+        
+        
   def clear_results(self):
     self.ui.tebMatch.setHtml("")
     self.ui.tebMatchAll.setHtml("")
@@ -179,7 +184,7 @@ class MyForm(QtGui.QMainWindow):
     #It works right now as long as groups are not named - I think
     print(compile_obj.groupindex)
     
-    match_index = len(allmatches) - 1
+    match_index = len(allmatches)
     
     group_tuples = []
     
@@ -197,13 +202,16 @@ class MyForm(QtGui.QMainWindow):
         #This part has to be fixed - it is designed to handle 1 group at a time
         #and it changes each time the user switches the group number - I want
         #to show them all.
-        g = allmatches[match_index]
-        if type(g) == types.TupleType:
-            for i in range(len(g)):
-                group_tuple = (i+1, group_nums.get(i+1, ""), g[i])
-                self.group_tuples.append(group_tuple)
-        else:
-            self.group_tuples.append( (1, group_nums.get(1, ""), g) )
+        for x in range(match_index):
+            g = allmatches[x]
+            if isinstance(g,tuple):
+                for i in range(len(g)):
+                    group_tuple = (i+1, group_nums.get(i+1, ""), g[i])
+                    group_tuples.append(group_tuple)
+            else:
+                group_tuples.append( (1, group_nums.get(1, ""), g) )
+                
+    self.populate_group_table(self.group_tuples)
       
   def findAllSpans(self, compile_obj):
     spans = []
