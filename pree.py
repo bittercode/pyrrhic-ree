@@ -179,25 +179,31 @@ class MyForm(QtGui.QMainWindow):
     #It works right now as long as groups are not named - I think
     print(compile_obj.groupindex)
     
+    match_index = len(allmatches) - 1
+    
+    group_tuples = []
+    
     if match_obj.groups():
-      num_groups = compile_obj.groups
-      mc = 1
-      gi = False
-      
-      if compile_obj.groupindex:
-        gi = True
-        keys = compile_obj.groupindex.keys()
+        num_groups = len(match_obj.groups())
         
-      for m in re.finditer(self.regex,self.matchstring):
-        i=1
-        if gi:
-            for k in keys:
-                print('Label:', k, ' String:', m.group(k))
+        group_nums = {}
+        
+        #This creates a dictionary of group names
+        if compile_obj.groupindex:
+            keys = compile_obj.groupindex.keys()
+            for key in keys:
+                group_nums[compile_obj.groupindex[key]] = key
+        
+        #This part has to be fixed - it is designed to handle 1 group at a time
+        #and it changes each time the user switches the group number - I want
+        #to show them all.
+        g = allmatches[match_index]
+        if type(g) == types.TupleType:
+            for i in range(len(g)):
+                group_tuple = (i+1, group_nums.get(i+1, ""), g[i])
+                self.group_tuples.append(group_tuple)
         else:
-            while i <= num_groups:
-                print('MatchNum:' + str(mc) + ' Group:' + str(i) + ' String:' +str(m.group(i)))
-                i=i+1
-        mc = mc +1
+            self.group_tuples.append( (1, group_nums.get(1, ""), g) )
       
   def findAllSpans(self, compile_obj):
     spans = []
