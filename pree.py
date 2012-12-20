@@ -110,14 +110,17 @@ class MyForm(QtGui.QMainWindow):
   def populate_group_textbrowser(self,tuples):
     self.ui.tebGroup.clear()
     row = 1
-    result = r'<table border=1 cellpadding=7 ><tr><th>Match Number</th><th>Group Number</th><th>Match Name</th><th>Match</th></tr>'
+    result = (r'<table border=1 cellpadding=7 ><tr><th>Match Number</th>' +
+              r'<th>Group Number</th><th>Match Name</th><th>Match</th></tr>')
     
     for t in tuples:
       if t[0]%2:
         trow_start = r'<tr style="background-color:lightgreen;">'
       else:
         trow_start = r'<tr>'
-      trow = trow_start + r'<td>' + str(t[0]) + r'</td><td>' + str(t[1]) + r'</td><td>' + str(t[2]) +r'</td><td>' + str(t[3]) + r'</td></tr>'
+      trow = trow_start + (r'<td>' + str(t[0]) + r'</td><td>' + str(t[1]) +
+                           r'</td><td>' + str(t[2]) +r'</td><td>' + str(t[3]) +
+                           r'</td></tr>')
       result = result + trow
       row = row + 1
       
@@ -135,7 +138,8 @@ class MyForm(QtGui.QMainWindow):
     
     for span in spans:
       if span[0] != 0:
-        result = text[idx:span[0]] + self.highlightStart + text[span[0]:span[1]] + self.highlightEnd
+        result = (text[idx:span[0]] + self.highlightStart + text[span[0]:span[1]]
+                  + self.highlightEnd)
       else:
         result = self.highlightStart + text[span[0]:span[1]] + self.highlightEnd
                 
