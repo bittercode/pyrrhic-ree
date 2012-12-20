@@ -1,1 +1,1 @@
-all = ['pyrrhic-ree']
+all = []

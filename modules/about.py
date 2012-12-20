@@ -1,10 +1,20 @@
+#  about.py: -*- Python -*-  DESCRIPTIVE TEXT.
+
 
 from PyQt4 import QtCore, QtGui
-from aboutui import *
+from modules.aboutui import *
+from modules.util import getPixmap
+import os,sys
 
-class About(Ui_dlgAbout):
-    def __init__(self):
-        Ui_dlgAbout.__init__(self)
-        myPixmap = QtGui.QPixmap(_fromUtf8('logo.phg'))
-        myScaledPixmap = myPixmap.scaled(self.lblLogo.size(), Qt.KeepAspectRatio)
-        self.lblLogo.setPixmap(myScaledPixmap)
+
+class About(QtGui.QDialog):
+    def __init__(self, parent=None):
+        super(About, self).__init__(parent)
+        self.ui = Ui_dlgAbout()
+        self.ui.setupUi(self)
+        
+        
+        image = getPixmap("logo.png")
+        myPixmap = QtGui.QPixmap(image)
+        self.ui.lblLogo.setPixmap(myPixmap)
+        

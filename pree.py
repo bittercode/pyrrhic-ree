@@ -20,7 +20,7 @@ except:
 import os.path
 from distutils.sysconfig import get_python_lib
 
-sys.path.insert(0, os.path.join(get_python_lib(), "pree"))
+sys.path.insert(0, os.path.join(get_python_lib(), "pyrrhicree"))
 
 
 from modules.mainWindow import *
@@ -282,7 +282,7 @@ class MyForm(QtGui.QMainWindow):
     return 1
 
   def showAbout(self):
-    self.aboutWindow = about()
+    self.aboutWindow = About()
     self.aboutWindow.show()
         
     

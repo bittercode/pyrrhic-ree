@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './modules/about.ui'
 #
-# Created: Thu Dec 20 14:56:07 2012
+# Created: Thu Dec 20 16:31:09 2012
 #      by: PyQt4 UI code generator 4.8.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -22,11 +22,11 @@ class Ui_dlgAbout(object):
         dlgAbout.setWindowTitle(QtGui.QApplication.translate("dlgAbout", "About Pree", None, QtGui.QApplication.UnicodeUTF8))
         self.gridLayout = QtGui.QGridLayout(dlgAbout)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
-        self.label_6 = QtGui.QLabel(dlgAbout)
-        self.label_6.setMinimumSize(QtCore.QSize(300, 300))
-        self.label_6.setText(QtGui.QApplication.translate("dlgAbout", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_6.setObjectName(_fromUtf8("label_6"))
-        self.gridLayout.addWidget(self.label_6, 0, 0, 4, 1)
+        self.lblLogo = QtGui.QLabel(dlgAbout)
+        self.lblLogo.setMinimumSize(QtCore.QSize(300, 300))
+        self.lblLogo.setText(QtGui.QApplication.translate("dlgAbout", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
+        self.lblLogo.setObjectName(_fromUtf8("lblLogo"))
+        self.gridLayout.addWidget(self.lblLogo, 0, 0, 4, 1)
         self.widget = QtGui.QWidget(dlgAbout)
         self.widget.setMinimumSize(QtCore.QSize(267, 0))
         self.widget.setObjectName(_fromUtf8("widget"))
@@ -65,7 +65,8 @@ class Ui_dlgAbout(object):
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.verticalLayout.addWidget(self.label_2)
         self.label_3 = QtGui.QLabel(self.widget_2)
-        self.label_3.setText(QtGui.QApplication.translate("dlgAbout", "https://github.com/bittercode/pyrrhic-ree", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setText(QtGui.QApplication.translate("dlgAbout", "<a href=\"https://github.com/bittercode/pyrrhic-ree\">https://github.com/bittercode/pyrrhic-ree</a>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setOpenExternalLinks(True)
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.verticalLayout.addWidget(self.label_3)
         self.gridLayout.addWidget(self.widget_2, 2, 1, 1, 2)
