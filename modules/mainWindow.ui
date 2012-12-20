@@ -166,7 +166,6 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionShow_Variables"/>
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
     <addaction name="actionExit"/>

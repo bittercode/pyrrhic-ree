@@ -24,6 +24,7 @@ sys.path.insert(0, os.path.join(get_python_lib(), "pree"))
 
 
 from modules.mainWindow import *
+from modules.about import *
 
 # regex to find special flags which must begin at beginning of line
 # or after some spaces
@@ -42,7 +43,7 @@ class MyForm(QtGui.QMainWindow):
     self.ui.setupUi(self)
     self.ui.tedReg.textChanged.connect(self.regChange)
     self.ui.tedString.textChanged.connect(self.strChange)
-    self.ui.actionShow_Variables.activated.connect(self.showVariables)
+    self.ui.actionAbout.activated.connect(self.showAbout)
     self.ui.actionExit.activated.connect(self.close)
     self.ui.chkCase.toggled.connect(self.checkChange)
     self.ui.chkMulti.toggled.connect(self.checkChange)
@@ -249,10 +250,6 @@ class MyForm(QtGui.QMainWindow):
             
       self.ui.tebMatch.setHtml(pre + self.highlightStart + match + self.highlightEnd + post)
         
-        
-  def showVariables(self):
-    message = "Regex: " + self.regex + "\nString: " + self.matchstring + "\nMA: " + self.texttry
-    self.ui.tebMatch.setPlainText(message)
     
   def process_embedded_flags(self, regex):
     # determine if the regex contains embedded regex flags.
@@ -283,6 +280,11 @@ class MyForm(QtGui.QMainWindow):
         self.ui.chkVerbose.setChecked(1)
 
     return 1
+
+  def showAbout(self):
+    self.aboutWindow = about()
+    self.aboutWindow.show()
+        
     
 if __name__ == "__main__":
   app = QtGui.QApplication(sys.argv)
