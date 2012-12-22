@@ -3,25 +3,33 @@
 
 from PyQt4 import QtCore, QtGui
 from modules.urlDialogUi import *
-import urllib
+import urllib.request
 
 class UrlDialog(QtGui.QDialog):
-    def __init__(self, parent=None, url=None):
+    
+    sig = QtCore.pyqtSignal('QString', name='urlImported')
+    
+    def __init__(self, parent=None):
         super(UrlDialog, self).__init__(parent)
         self.ui = Ui_urlDialog()
         self.ui.setupUi(self)
-        if url:
-          self.ui.txtURL.setText(url)
+        
         
     def accept(self):
-      url = str(self.ui.txtURL.text())
+      url = str(self.ui.txtURL.toPlainText())
       try:
-        fp = urllib.urlopen(url)
-        lines = fp.readlines()
+        nurl = urllib.request.urlopen(url)
+        mybytes = nurl.read()
+        mystr = mybytes.decode("utf8")
+        nurl.close()
+        
       except Exception as e:
-        QMessageBox.information(None, "Failed to open URL",
+        QtGui.QMessageBox.information(None, "Failed to open URL",
                                 "Could not open the specified URL. Please check to ensure that you have entered the correct URL.\n\n%s" % str(e))
         return
       
-      html = ''.join(lines)
-      self.parent.emit(PYSIGNAAL('urlImported()'), (html,url))
+      html = ''.join(mystr)
+      self.sig.emit( html)
+      
+      self.done(1)
+      

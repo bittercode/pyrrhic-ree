@@ -287,6 +287,10 @@ class MyForm(QtGui.QMainWindow):
 
     return 1
 
+  def urlImported(self, html):
+        #self.url = url
+        self.ui.tedString.setPlainText(html)
+        
   def showAbout(self):
     self.aboutWindow = About()
     self.aboutWindow.show()
@@ -294,7 +298,7 @@ class MyForm(QtGui.QMainWindow):
   def showImpURL(self):
     self.impurlWindow = UrlDialog()
     self.impurlWindow.show()
-        
+    self.impurlWindow.urlImported.connect(self.urlImported)  
     
 if __name__ == "__main__":
   app = QtGui.QApplication(sys.argv)
