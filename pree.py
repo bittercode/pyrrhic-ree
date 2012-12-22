@@ -25,6 +25,7 @@ sys.path.insert(0, os.path.join(get_python_lib(), "pyrrhicree"))
 
 from modules.mainWindow import *
 from modules.about import *
+from modules.urlDialog import *
 
 # regex to find special flags which must begin at beginning of line
 # or after some spaces
@@ -44,6 +45,7 @@ class MyForm(QtGui.QMainWindow):
     self.ui.tedReg.textChanged.connect(self.regChange)
     self.ui.tedString.textChanged.connect(self.strChange)
     self.ui.actionAbout.activated.connect(self.showAbout)
+    self.ui.actionImport_URL.activated.connect(self.showImpURL)
     self.ui.actionExit.activated.connect(self.close)
     self.ui.chkCase.toggled.connect(self.checkChange)
     self.ui.chkMulti.toggled.connect(self.checkChange)
@@ -288,6 +290,10 @@ class MyForm(QtGui.QMainWindow):
   def showAbout(self):
     self.aboutWindow = About()
     self.aboutWindow.show()
+    
+  def showImpURL(self):
+    self.impurlWindow = UrlDialog()
+    self.impurlWindow.show()
         
     
 if __name__ == "__main__":

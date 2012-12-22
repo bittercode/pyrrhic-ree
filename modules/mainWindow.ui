@@ -169,6 +169,8 @@
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
     <addaction name="actionExit"/>
+    <addaction name="separator"/>
+    <addaction name="actionImport_URL"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -222,6 +224,11 @@
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>
+   </property>
+  </action>
+  <action name="actionImport_URL">
+   <property name="text">
+    <string>Import URL</string>
    </property>
   </action>
  </widget>
