@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './modules/urlDialog.ui'
 #
-# Created: Sat Dec 22 21:15:42 2012
+# Created: Sat Dec 22 22:05:29 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -25,7 +25,7 @@ class Ui_urlDialog(object):
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
         self.verticalLayout = QtGui.QVBoxLayout(self.groupBox)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.txtURL = QtGui.QTextBrowser(self.groupBox)
+        self.txtURL = QtGui.QTextEdit(self.groupBox)
         self.txtURL.setObjectName(_fromUtf8("txtURL"))
         self.verticalLayout.addWidget(self.txtURL)
         self.verticalLayout_2.addWidget(self.groupBox)
