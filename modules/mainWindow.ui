@@ -171,6 +171,7 @@
     <addaction name="actionExit"/>
     <addaction name="separator"/>
     <addaction name="actionImport_URL"/>
+    <addaction name="actionImport_File"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -229,6 +230,11 @@
   <action name="actionImport_URL">
    <property name="text">
     <string>Import URL</string>
+   </property>
+  </action>
+  <action name="actionImport_File">
+   <property name="text">
+    <string>Import File</string>
    </property>
   </action>
  </widget>

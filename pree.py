@@ -46,6 +46,7 @@ class MyForm(QtGui.QMainWindow):
     self.ui.tedString.textChanged.connect(self.strChange)
     self.ui.actionAbout.activated.connect(self.showAbout)
     self.ui.actionImport_URL.activated.connect(self.showImpURL)
+    self.ui.actionImport_File.activated.connect(self.importFile)
     self.ui.actionExit.activated.connect(self.close)
     self.ui.chkCase.toggled.connect(self.checkChange)
     self.ui.chkMulti.toggled.connect(self.checkChange)
@@ -298,7 +299,25 @@ class MyForm(QtGui.QMainWindow):
   def showImpURL(self):
     self.impurlWindow = UrlDialog()
     self.impurlWindow.show()
-    self.impurlWindow.urlImported.connect(self.urlImported)  
+    self.impurlWindow.urlImported.connect(self.urlImported)
+    
+  def importFile(self):
+        
+        fn = QtGui.QFileDialog.getOpenFileName(self, 'Import File', "All (*)",)
+        
+        if fn=="":
+            return None
+
+        filename = fn
+        
+        try:
+            fp = open(filename, "r")
+        except:
+            return None
+        
+        data = fp.read()
+        fp.close()
+        self.ui.tedString.setPlainText(data)
     
 if __name__ == "__main__":
   app = QtGui.QApplication(sys.argv)

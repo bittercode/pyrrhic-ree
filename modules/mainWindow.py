@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './modules/mainWindow.ui'
 #
-# Created: Sat Dec 22 21:47:55 2012
+# Created: Sun Dec 23 09:13:51 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -119,11 +119,14 @@ class Ui_MainWindow(object):
         self.actionOpen.setObjectName(_fromUtf8("actionOpen"))
         self.actionImport_URL = QtGui.QAction(MainWindow)
         self.actionImport_URL.setObjectName(_fromUtf8("actionImport_URL"))
+        self.actionImport_File = QtGui.QAction(MainWindow)
+        self.actionImport_File.setObjectName(_fromUtf8("actionImport_File"))
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave)
         self.menuFile.addAction(self.actionExit)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionImport_URL)
+        self.menuFile.addAction(self.actionImport_File)
         self.menuHelp.addAction(self.actionRegex_Reference_Guide)
         self.menuHelp.addAction(self.actionRegex_Library)
         self.menuHelp.addAction(self.actionPython_Regex_Help)
@@ -167,4 +170,5 @@ class Ui_MainWindow(object):
         self.actionSave.setText(QtGui.QApplication.translate("MainWindow", "Save", None, QtGui.QApplication.UnicodeUTF8))
         self.actionOpen.setText(QtGui.QApplication.translate("MainWindow", "Open", None, QtGui.QApplication.UnicodeUTF8))
         self.actionImport_URL.setText(QtGui.QApplication.translate("MainWindow", "Import URL", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionImport_File.setText(QtGui.QApplication.translate("MainWindow", "Import File", None, QtGui.QApplication.UnicodeUTF8))
 
