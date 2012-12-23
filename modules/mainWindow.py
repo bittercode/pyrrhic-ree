@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './modules/mainWindow.ui'
 #
-# Created: Sun Dec 23 09:13:51 2012
+# Created: Sun Dec 23 23:48:11 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(800, 728)
+        MainWindow.resize(800, 665)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.verticalLayout = QtGui.QVBoxLayout(self.centralwidget)
@@ -27,10 +27,18 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QtGui.QHBoxLayout(self.gbReg)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.tedReg = QtGui.QTextEdit(self.gbReg)
+        self.tedReg.setAutoFillBackground(False)
+        self.tedReg.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.tedReg.setFrameShadow(QtGui.QFrame.Sunken)
         self.tedReg.setObjectName(_fromUtf8("tedReg"))
         self.horizontalLayout_2.addWidget(self.tedReg)
         self.verticalLayout.addWidget(self.gbReg)
-        self.gbFlags = QtGui.QGroupBox(self.centralwidget)
+        self.gbFlagButtons = QtGui.QGroupBox(self.centralwidget)
+        self.gbFlagButtons.setTitle(_fromUtf8(""))
+        self.gbFlagButtons.setObjectName(_fromUtf8("gbFlagButtons"))
+        self.horizontalLayout_8 = QtGui.QHBoxLayout(self.gbFlagButtons)
+        self.horizontalLayout_8.setObjectName(_fromUtf8("horizontalLayout_8"))
+        self.gbFlags = QtGui.QGroupBox(self.gbFlagButtons)
         self.gbFlags.setMinimumSize(QtCore.QSize(0, 60))
         self.gbFlags.setObjectName(_fromUtf8("gbFlags"))
         self.horizontalLayout = QtGui.QHBoxLayout(self.gbFlags)
@@ -53,7 +61,20 @@ class Ui_MainWindow(object):
         self.chkAscii = QtGui.QCheckBox(self.gbFlags)
         self.chkAscii.setObjectName(_fromUtf8("chkAscii"))
         self.horizontalLayout.addWidget(self.chkAscii)
-        self.verticalLayout.addWidget(self.gbFlags)
+        self.horizontalLayout_8.addWidget(self.gbFlags)
+        self.gbButtons = QtGui.QGroupBox(self.gbFlagButtons)
+        self.gbButtons.setTitle(_fromUtf8(""))
+        self.gbButtons.setObjectName(_fromUtf8("gbButtons"))
+        self.horizontalLayout_7 = QtGui.QHBoxLayout(self.gbButtons)
+        self.horizontalLayout_7.setObjectName(_fromUtf8("horizontalLayout_7"))
+        self.pbPause = QtGui.QPushButton(self.gbButtons)
+        self.pbPause.setObjectName(_fromUtf8("pbPause"))
+        self.horizontalLayout_7.addWidget(self.pbPause)
+        self.pbExamin = QtGui.QPushButton(self.gbButtons)
+        self.pbExamin.setObjectName(_fromUtf8("pbExamin"))
+        self.horizontalLayout_7.addWidget(self.pbExamin)
+        self.horizontalLayout_8.addWidget(self.gbButtons)
+        self.verticalLayout.addWidget(self.gbFlagButtons)
         self.gbString = QtGui.QGroupBox(self.centralwidget)
         self.gbString.setObjectName(_fromUtf8("gbString"))
         self.horizontalLayout_3 = QtGui.QHBoxLayout(self.gbString)
@@ -155,6 +176,8 @@ class Ui_MainWindow(object):
         self.chkLocale.setText(QtGui.QApplication.translate("MainWindow", "Locale", None, QtGui.QApplication.UnicodeUTF8))
         self.chkAscii.setToolTip(QtGui.QApplication.translate("MainWindow", "Make w, W, b, B, s and S perform ASCII-only matching instead of full Unicode matching. This is only meaningful for Unicode patterns, and is ignored for byte patterns.", None, QtGui.QApplication.UnicodeUTF8))
         self.chkAscii.setText(QtGui.QApplication.translate("MainWindow", "Ascii", None, QtGui.QApplication.UnicodeUTF8))
+        self.pbPause.setText(QtGui.QApplication.translate("MainWindow", "Pause", None, QtGui.QApplication.UnicodeUTF8))
+        self.pbExamin.setText(QtGui.QApplication.translate("MainWindow", "Examine", None, QtGui.QApplication.UnicodeUTF8))
         self.gbString.setTitle(QtGui.QApplication.translate("MainWindow", "Search String", None, QtGui.QApplication.UnicodeUTF8))
         self.tabResults.setTabText(self.tabResults.indexOf(self.tabMatch), QtGui.QApplication.translate("MainWindow", "Search", None, QtGui.QApplication.UnicodeUTF8))
         self.tabResults.setTabText(self.tabResults.indexOf(self.tabMatchAll), QtGui.QApplication.translate("MainWindow", "Find All", None, QtGui.QApplication.UnicodeUTF8))

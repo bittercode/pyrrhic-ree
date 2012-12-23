@@ -1,4 +1,4 @@
-#  about.py: -*- Python -*-  DESCRIPTIVE TEXT.
+#  about.py: -*- Python -*-
 
 
 from PyQt4 import QtCore, QtGui
@@ -10,7 +10,7 @@ import os,sys
 
 class About(QtGui.QDialog):
     def __init__(self, parent=None):
-        super(About, self).__init__(parent)
+        super().__init__(parent)
         self.ui = Ui_dlgAbout()
         self.ui.setupUi(self)
         

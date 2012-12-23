@@ -4,7 +4,7 @@
 #       A lot of the code is the same - probably the biggest difference other than using new libraries,
 #       is that I don't use custom controls and do use html in the qtextbrowser objects for formatting
 #       and creating the group table, etc. I could never have written it without having the original
-#       as a reference.git
+#       as a reference.
 
 import sys
 import re
@@ -39,9 +39,10 @@ EMBEDDED_FLAGS = r"^ *\(\?(?P<flags>[aiLmsx]*)\)"
 
 class MyForm(QtGui.QMainWindow):
   def __init__(self, parent=None):
-    super(MyForm, self).__init__(parent)
+    super().__init__(parent)
     self.ui = Ui_MainWindow()
     self.ui.setupUi(self)
+    self.ui.tabResults.setCurrentIndex(0)
     self.ui.tedReg.textChanged.connect(self.regChange)
     self.ui.tedString.textChanged.connect(self.strChange)
     self.ui.actionAbout.activated.connect(self.showAbout)
@@ -54,13 +55,24 @@ class MyForm(QtGui.QMainWindow):
     self.ui.chkVerbose.toggled.connect(self.checkChange)
     self.ui.chkLocale.toggled.connect(self.checkChange)
     self.ui.chkAscii.toggled.connect(self.checkChange)
+    self.ui.pbPause.clicked.connect(self.clickPause)
     
     self.regex = ""
     self.matchstring = ""
+    self.replace = ""
     self.flags = 0
+    self.is_paused = False
     self.debug = False
     self.group_tuples = None
     self.embedded_flags_obj = re.compile(EMBEDDED_FLAGS)
+    
+    self.MNUMBER    = self.tr("Match Number")
+    self.GNUMBER    = self.tr("Group Number")
+    self.MATCHNAME  = self.tr("Match Name")
+    self.MATCHTEXT  = self.tr("Match")
+    self.MSG_NA     = self.tr("Enter a regular expression and a string to match against")
+    self.MSG_PAUSED = self.tr("Pree regex processing is paused.  Click the pause icon to unpause")
+    self.MSG_FAIL   = self.tr("Pattern does not match")
     
     self.highlightColor = r'#7FFF00'
     self.highlightStart = r'<span style="background-color: '+ self.highlightColor + r'">'
@@ -89,6 +101,27 @@ class MyForm(QtGui.QMainWindow):
 
       self.process_regex()
   
+  def clickPause(self):
+    
+    self.is_paused = not self.is_paused
+    
+    if self.is_paused:
+        self.ui.pbPause.setText('UnPause')
+        temptext = self.ui.tedReg.toPlainText()
+        self.ui.tedReg.setTextColor(QtGui.QColor(255,0,0))
+        self.ui.tedReg.clear()
+        self.ui.tedReg.setPlainText(temptext)
+        self.ui.gbReg.setStyleSheet(r'QGroupBox{font-weight: bold; color: red;}')
+        self.ui.gbReg.setTitle('Regular Expression Pattern *Processing Paused*')
+    else:
+        self.ui.pbPause.setText('Pause')
+        temptext = self.ui.tedReg.toPlainText()
+        self.ui.tedReg.setTextColor(QtGui.QColor(0,0,0))
+        self.ui.tedReg.clear()
+        self.ui.tedReg.setPlainText(temptext)
+        self.ui.gbReg.setStyleSheet(r'QGroupBox{font-weight: normal; color: black;}')
+        self.ui.gbReg.setTitle('Regular Expression Pattern')
+        
   def regChange(self):
     try:
       self.regex = str(self.ui.tedReg.toPlainText())
@@ -113,8 +146,9 @@ class MyForm(QtGui.QMainWindow):
   def populate_group_textbrowser(self,tuples):
     self.ui.tebGroup.clear()
     row = 1
-    result = (r'<table border=1 cellpadding=7 ><tr><th>Match Number</th>' +
-              r'<th>Group Number</th><th>Match Name</th><th>Match</th></tr>')
+    result = (r'<table border=1 cellpadding=7 ><tr><th>' + self.MNUMBER + r'</th>' +
+              r'<th>' + self.GNUMBER + r'</th><th>' + self.MATCHNAME + r'</th><th>' +
+              self.MATCHTEXT + r'</th></tr>')
     
     for t in tuples:
       if t[0]%2:
@@ -161,6 +195,9 @@ class MyForm(QtGui.QMainWindow):
   def process_regex(self):
     if not self.regex or not self.matchstring:
         self.clear_results()
+        return
+    
+    if self.is_paused:
         return
     
     self.process_embedded_flags(self.regex)

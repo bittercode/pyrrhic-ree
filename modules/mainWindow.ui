@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>728</height>
+    <height>665</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,81 +22,123 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QTextEdit" name="tedReg"/>
+        <widget class="QTextEdit" name="tedReg">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Sunken</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
     </item>
     <item>
-     <widget class="QGroupBox" name="gbFlags">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>60</height>
-       </size>
-      </property>
+     <widget class="QGroupBox" name="gbFlagButtons">
       <property name="title">
-       <string>Flags</string>
+       <string/>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
        <item>
-        <widget class="QCheckBox" name="chkCase">
-         <property name="toolTip">
-          <string>Perform case-insensitive matching</string>
+        <widget class="QGroupBox" name="gbFlags">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>60</height>
+          </size>
          </property>
-         <property name="text">
-          <string>Ignore Case</string>
+         <property name="title">
+          <string>Flags</string>
          </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QCheckBox" name="chkCase">
+            <property name="toolTip">
+             <string>Perform case-insensitive matching</string>
+            </property>
+            <property name="text">
+             <string>Ignore Case</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="chkMulti">
+            <property name="toolTip">
+             <string>^ matches at the beginning of the string and at the beginning of each line within the string, immediately following each newline. Similarly, the $ metacharacter matches either at the end of the string and at the end of each line (immediately preceding each newline).</string>
+            </property>
+            <property name="text">
+             <string>Multi Line</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="chkDot">
+            <property name="toolTip">
+             <string>Makes the '.' special character match any character at all, including a newline; without this flag, '.' will match anything except a newline.</string>
+            </property>
+            <property name="text">
+             <string>Dot All</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="chkVerbose">
+            <property name="toolTip">
+             <string>This flag allows you to write regular expressions that are more readable by granting you more flexibility in how you can format them. When this flag has been specified, whitespace within the RE string is ignored, except when the whitespace is in a character class or preceded by an unescaped backslash; this lets you organize and indent the RE more clearly. This flag also lets you put comments within a RE that will be ignored by the engine; comments are marked by a '#' that’s neither in a character class or preceded by an unescaped backslash.</string>
+            </property>
+            <property name="text">
+             <string>Verbose</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="chkLocale">
+            <property name="toolTip">
+             <string>Make w, W, b, and B, dependent on the current locale.</string>
+            </property>
+            <property name="text">
+             <string>Locale</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="chkAscii">
+            <property name="toolTip">
+             <string>Make w, W, b, B, s and S perform ASCII-only matching instead of full Unicode matching. This is only meaningful for Unicode patterns, and is ignored for byte patterns.</string>
+            </property>
+            <property name="text">
+             <string>Ascii</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="chkMulti">
-         <property name="toolTip">
-          <string>^ matches at the beginning of the string and at the beginning of each line within the string, immediately following each newline. Similarly, the $ metacharacter matches either at the end of the string and at the end of each line (immediately preceding each newline).</string>
+        <widget class="QGroupBox" name="gbButtons">
+         <property name="title">
+          <string/>
          </property>
-         <property name="text">
-          <string>Multi Line</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="chkDot">
-         <property name="toolTip">
-          <string>Makes the '.' special character match any character at all, including a newline; without this flag, '.' will match anything except a newline.</string>
-         </property>
-         <property name="text">
-          <string>Dot All</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="chkVerbose">
-         <property name="toolTip">
-          <string>This flag allows you to write regular expressions that are more readable by granting you more flexibility in how you can format them. When this flag has been specified, whitespace within the RE string is ignored, except when the whitespace is in a character class or preceded by an unescaped backslash; this lets you organize and indent the RE more clearly. This flag also lets you put comments within a RE that will be ignored by the engine; comments are marked by a '#' that’s neither in a character class or preceded by an unescaped backslash.</string>
-         </property>
-         <property name="text">
-          <string>Verbose</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="chkLocale">
-         <property name="toolTip">
-          <string>Make w, W, b, and B, dependent on the current locale.</string>
-         </property>
-         <property name="text">
-          <string>Locale</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="chkAscii">
-         <property name="toolTip">
-          <string>Make w, W, b, B, s and S perform ASCII-only matching instead of full Unicode matching. This is only meaningful for Unicode patterns, and is ignored for byte patterns.</string>
-         </property>
-         <property name="text">
-          <string>Ascii</string>
-         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <item>
+           <widget class="QPushButton" name="pbPause">
+            <property name="text">
+             <string>Pause</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pbExamin">
+            <property name="text">
+             <string>Examine</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
