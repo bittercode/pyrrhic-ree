@@ -19,6 +19,5 @@ def getPixmap(fileStr, fileType="PNG", dir="images"):
     image = getAppPath() + os.sep + dir + os.sep + fileStr
     
     pixmap = QPixmap(image, fileType)
-    #pixmap.setMask(pixmap.createHeuristicMask(1))
     
     return pixmap

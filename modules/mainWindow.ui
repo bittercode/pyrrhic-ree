@@ -174,7 +174,7 @@
     <item>
      <widget class="QTabWidget" name="tabResults">
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabMatch">
        <attribute name="title">

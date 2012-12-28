@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './modules/about.ui'
 #
-# Created: Thu Dec 20 16:31:09 2012
+# Created: Fri Dec 28 14:50:03 2012
 #      by: PyQt4 UI code generator 4.8.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -24,7 +24,7 @@ class Ui_dlgAbout(object):
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.lblLogo = QtGui.QLabel(dlgAbout)
         self.lblLogo.setMinimumSize(QtCore.QSize(300, 300))
-        self.lblLogo.setText(QtGui.QApplication.translate("dlgAbout", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
+        self.lblLogo.setText(_fromUtf8(""))
         self.lblLogo.setObjectName(_fromUtf8("lblLogo"))
         self.gridLayout.addWidget(self.lblLogo, 0, 0, 4, 1)
         self.widget = QtGui.QWidget(dlgAbout)

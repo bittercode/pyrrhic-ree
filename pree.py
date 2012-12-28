@@ -194,6 +194,9 @@ class MyForm(QtGui.QMainWindow):
   def clear_results(self):
     self.ui.tebMatch.setHtml("")
     self.ui.tebMatchAll.setHtml("")
+    self.ui.tebGroup.setHtml("")
+    self.ui.tebRep1.setHtml("")
+    self.ui.tebRepAll.setHtml("")
     self.ui.statusbar.clearMessage()
     
   def process_regex(self):
