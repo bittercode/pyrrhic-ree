@@ -14,7 +14,7 @@
    <string>Pyrrhic REE</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <widget class="QGroupBox" name="gbReg">
       <property name="title">
@@ -145,21 +145,36 @@
      </widget>
     </item>
     <item>
-     <widget class="QGroupBox" name="gbString">
-      <property name="title">
-       <string>Search String</string>
+     <widget class="QTabWidget" name="tabStringRep">
+      <property name="currentIndex">
+       <number>0</number>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <widget class="QTextEdit" name="tedString"/>
-       </item>
-      </layout>
+      <widget class="QWidget" name="tabString">
+       <attribute name="title">
+        <string>Search String</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QTextEdit" name="tedString"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabRepStr">
+       <attribute name="title">
+        <string>Replace String</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QTextEdit" name="tedReplace"/>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
     <item>
      <widget class="QTabWidget" name="tabResults">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabMatch">
        <attribute name="title">
@@ -188,6 +203,26 @@
        <layout class="QHBoxLayout" name="horizontalLayout_6">
         <item>
          <widget class="QTextBrowser" name="tebGroup"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabRep1">
+       <attribute name="title">
+        <string>Replace First</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QTextBrowser" name="textBrowser"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabRepAll">
+       <attribute name="title">
+        <string>Replace All</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QTextBrowser" name="textBrowser_2"/>
         </item>
        </layout>
       </widget>
