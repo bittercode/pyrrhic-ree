@@ -45,6 +45,7 @@ class MyForm(QtGui.QMainWindow):
     self.ui.tabResults.setCurrentIndex(0)
     self.ui.tedReg.textChanged.connect(self.regChange)
     self.ui.tedString.textChanged.connect(self.strChange)
+    self.ui.tedReplace.textChanged.connect(self.repChange)
     self.ui.actionAbout.activated.connect(self.showAbout)
     self.ui.actionImport_URL.activated.connect(self.showImpURL)
     self.ui.actionImport_File.activated.connect(self.importFile)
@@ -141,7 +142,10 @@ class MyForm(QtGui.QMainWindow):
       
     self.process_regex()
     
-
+  def repChange(self):
+    self.replace = str(self.ui.tedReplace.toPlainText())
+    self.process_regex()
+    
   # The tuple holds two things - the group name and the contents of the match and I can count rows
   def populate_group_textbrowser(self,tuples):
     self.ui.tebGroup.clear()
@@ -201,6 +205,13 @@ class MyForm(QtGui.QMainWindow):
         return
     
     self.process_embedded_flags(self.regex)
+    
+    if self.replace:
+        repl = re.sub(self.regex,self.replace,self.matchstring,0,self.flags)
+        repl1 = re.sub(self.regex,self.replace,self.matchstring,1,self.flags)
+        print('REPL: ', repl)
+        self.ui.tebRepAll.setText(repl)
+        self.ui.tebRep1.setText(repl1)
     
     compile_obj = re.compile(self.regex, self.flags)
     allmatches = compile_obj.findall(self.matchstring)

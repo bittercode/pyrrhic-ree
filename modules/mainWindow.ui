@@ -174,7 +174,7 @@
     <item>
      <widget class="QTabWidget" name="tabResults">
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tabMatch">
        <attribute name="title">
@@ -212,7 +212,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
-         <widget class="QTextBrowser" name="textBrowser"/>
+         <widget class="QTextBrowser" name="tebRep1"/>
         </item>
        </layout>
       </widget>
@@ -222,7 +222,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <widget class="QTextBrowser" name="textBrowser_2"/>
+         <widget class="QTextBrowser" name="tebRepAll"/>
         </item>
        </layout>
       </widget>

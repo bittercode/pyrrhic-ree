@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './modules/mainWindow.ui'
 #
-# Created: Fri Dec 28 13:49:14 2012
+# Created: Fri Dec 28 14:29:19 2012
 #      by: PyQt4 UI code generator 4.8.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -141,17 +141,17 @@ class Ui_MainWindow(object):
         self.tabRep1.setObjectName(_fromUtf8("tabRep1"))
         self.verticalLayout_4 = QtGui.QVBoxLayout(self.tabRep1)
         self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
-        self.textBrowser = QtGui.QTextBrowser(self.tabRep1)
-        self.textBrowser.setObjectName(_fromUtf8("textBrowser"))
-        self.verticalLayout_4.addWidget(self.textBrowser)
+        self.tebRep1 = QtGui.QTextBrowser(self.tabRep1)
+        self.tebRep1.setObjectName(_fromUtf8("tebRep1"))
+        self.verticalLayout_4.addWidget(self.tebRep1)
         self.tabResults.addTab(self.tabRep1, _fromUtf8(""))
         self.tabRepAll = QtGui.QWidget()
         self.tabRepAll.setObjectName(_fromUtf8("tabRepAll"))
         self.verticalLayout_5 = QtGui.QVBoxLayout(self.tabRepAll)
         self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
-        self.textBrowser_2 = QtGui.QTextBrowser(self.tabRepAll)
-        self.textBrowser_2.setObjectName(_fromUtf8("textBrowser_2"))
-        self.verticalLayout_5.addWidget(self.textBrowser_2)
+        self.tebRepAll = QtGui.QTextBrowser(self.tabRepAll)
+        self.tebRepAll.setObjectName(_fromUtf8("tebRepAll"))
+        self.verticalLayout_5.addWidget(self.tebRepAll)
         self.tabResults.addTab(self.tabRepAll, _fromUtf8(""))
         self.verticalLayout_2.addWidget(self.tabResults)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -214,7 +214,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabStringRep.setCurrentIndex(0)
-        self.tabResults.setCurrentIndex(0)
+        self.tabResults.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
