@@ -50,13 +50,18 @@ class MyForm(QtGui.QMainWindow):
     self.ui.actionImport_URL.triggered.connect(self.showImpURL)
     self.ui.actionImport_File.triggered.connect(self.importFile)
     self.ui.actionExit.triggered.connect(self.close)
-    self.ui.chkCase.toggled.connect(self.checkChange)
-    self.ui.chkMulti.toggled.connect(self.checkChange)
-    self.ui.chkDot.toggled.connect(self.checkChange)
-    self.ui.chkVerbose.toggled.connect(self.checkChange)
-    self.ui.chkLocale.toggled.connect(self.checkChange)
-    self.ui.chkAscii.toggled.connect(self.checkChange)
     self.ui.pbPause.clicked.connect(self.clickPause)
+    
+    # give a callback to the flag toggles
+    # that provides information about which flag was toggled
+    # the lambda is used to send information to the callback about
+    # who the caller was.
+    self.ui.chkCase.toggled.connect(lambda: self.checkChange(re.IGNORECASE))
+    self.ui.chkMulti.toggled.connect(lambda: self.checkChange(re.MULTILINE))
+    self.ui.chkDot.toggled.connect(lambda: self.checkChange(re.DOTALL))
+    self.ui.chkVerbose.toggled.connect(lambda: self.checkChange(re.VERBOSE))
+    self.ui.chkLocale.toggled.connect(lambda: self.checkChange(re.LOCALE))
+    self.ui.chkAscii.toggled.connect(lambda: self.checkChange(re.ASCII))
     
     self.regex = ""
     self.matchstring = ""
@@ -79,27 +84,15 @@ class MyForm(QtGui.QMainWindow):
     self.highlightStart = r'<span style="background-color: '+ self.highlightColor + r'">'
     self.highlightEnd = r'</span>'
   
-  def checkChange(self):
-      self.flags = 0
-        
-      if self.ui.chkCase.isChecked():
-        self.flags = self.flags + re.IGNORECASE
+      def checkChange(self, toggledFlagValue):
+      '''
+      Toggles the flags provided by the toggledFlagValue from the flag member.
 
-      if self.ui.chkMulti.isChecked():
-        self.flags = self.flags + re.MULTILINE
-
-      if self.ui.chkDot.isChecked():
-        self.flags = self.flags + re.DOTALL
-
-      if self.ui.chkVerbose.isChecked():
-        self.flags = self.flags + re.VERBOSE
-
-      if self.ui.chkLocale.isChecked():
-        self.flags = self.flags + re.LOCALE
-
-      if self.ui.chkAscii.isChecked():
-        self.flags = self.flags + re.ASCII
-
+      Because the re flags are powers of 2 it makes using bitwise operations
+      the easiest way to handle them. XOR is used to toggle each flags bit on or
+      off without the need for any logic.
+      '''
+      self.flags ^= toggledFlagValue
       self.process_regex()
   
   def clickPause(self):
