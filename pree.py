@@ -211,7 +211,7 @@ class MyForm(QtGui.QMainWindow):
     
     compile_obj = re.compile(self.regex, self.flags)
     allmatches = compile_obj.findall(self.matchstring)
-    print('FLAGS: ' + str(self.flags))
+    
     #This is a big change I"m not updating the spinner
     if allmatches and len(allmatches):
         match_index = len(allmatches) -1
