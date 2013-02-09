@@ -117,26 +117,16 @@ class MyForm(QtGui.QMainWindow):
         self.ui.gbReg.setTitle('Regular Expression Pattern')
         
   def regChange(self):
-    try:
-      self.regex = str(self.ui.tedReg.toPlainText())
-      
-    except UnicodeError:
-      self.regex = unicode(self.ui.tedReg.text())
-      
+    self.regex = self.ui.tedReg.toPlainText()
     self.process_regex()
     
     
   def strChange(self):
-    try:
-      self.matchstring = str(self.ui.tedString.toPlainText())
-      
-    except UnicodeError:
-      self.matchstring = unicode(self.ui.tedString.text())
-      
+    self.matchstring = self.ui.tedString.toPlainText()
     self.process_regex()
     
   def repChange(self):
-    self.replace = str(self.ui.tedReplace.toPlainText())
+    self.replace = self.ui.tedReplace.toPlainText()
     self.process_regex()
     
   # The tuple holds two things - the group name and the contents of the match and I can count rows

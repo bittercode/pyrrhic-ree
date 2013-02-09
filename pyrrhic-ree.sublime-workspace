@@ -1,0 +1,1442 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"togg",
+				"toggledFlagValue	(local, instance)"
+			],
+			[
+				"connection",
+				"connection  (module)"
+			],
+			[
+				"exp",
+				"expectedLength"
+			],
+			[
+				"Bu",
+				"BuildPool	(attribute, function)"
+			],
+			[
+				"Conne",
+				"ConnectionPool  (class)"
+			],
+			[
+				"connect",
+				"connection_pool  (module)"
+			],
+			[
+				"__",
+				"__name__	(builtin, instance)"
+			],
+			[
+				"serialzed",
+				"serializedString	(local, instance)"
+			],
+			[
+				"trans",
+				"transmission_data_serializer  (module)"
+			],
+			[
+				"dat",
+				"dataObj	(local, instance)"
+			],
+			[
+				"act",
+				"actualData	(local, instance)"
+			],
+			[
+				"TextR",
+				"TextTestRunner  (class)"
+			],
+			[
+				"test",
+				"testSuit	(global, instance)"
+			],
+			[
+				"jso",
+				"jsonString	(local, instance)"
+			],
+			[
+				"Transm",
+				"TransmissionDataSerializer	(imported, instance)"
+			],
+			[
+				"TextT",
+				"TextTestRunner  (class)"
+			],
+			[
+				"loa",
+				"loadTestsFromTestCase  (function)"
+			],
+			[
+				"TransmissionDataSeri",
+				"TransmissionDataSerializerTests	(global, class)"
+			],
+			[
+				"TransmissionD",
+				"TransmissionDataSerializerTests	(global, class)"
+			],
+			[
+				"Gener",
+				"GenerateString"
+			],
+			[
+				"expe",
+				"ExpectedTime"
+			],
+			[
+				"Trans",
+				"TransmissionDataSerializer	(imported, instance)"
+			],
+			[
+				"DataO",
+				"DataObjWithTime	(attribute, instance)"
+			],
+			[
+				"tran",
+				"transmission_data_serializer  (module)"
+			],
+			[
+				"Data",
+				"DataObjWithoutTime	(attribute, instance)"
+			],
+			[
+				"Ex",
+				"ExpectedData	(attribute, instance)"
+			],
+			[
+				"JS",
+				"JSONEncoder  (class)"
+			],
+			[
+				"dum",
+				"dumps  (function)"
+			],
+			[
+				"du",
+				"dumps  (function)"
+			],
+			[
+				"_Data",
+				"_DataEncoder"
+			],
+			[
+				"JSON",
+				"JSONEncoder"
+			],
+			[
+				"su",
+				"super	(builtin, function)"
+			],
+			[
+				"resul",
+				"results	(global, instance)"
+			],
+			[
+				"word",
+				"wordsToSearch"
+			],
+			[
+				"Wor",
+				"wordsToSearch"
+			],
+			[
+				"match",
+				"matchCount	(local, instance)"
+			],
+			[
+				"re",
+				"result	(local, instance)"
+			],
+			[
+				"res",
+				"results	(local, instance)"
+			],
+			[
+				"len",
+				"lenDifference	(local, instance)"
+			],
+			[
+				"le",
+				"leven"
+			],
+			[
+				"file",
+				"fileName	(local, instance)"
+			],
+			[
+				"read",
+				"readlines	(builtin, function)"
+			],
+			[
+				"_publ",
+				"_publisherHistory	(attribute, instance)"
+			],
+			[
+				"publ",
+				"publisherHistory	(local, instance)"
+			],
+			[
+				"me",
+				"Media"
+			],
+			[
+				"kni",
+				"knight1	(local, instance)"
+			],
+			[
+				"knight",
+				"knight2	(local, instance)"
+			],
+			[
+				"result",
+				"resultdata	(local, instance)"
+			],
+			[
+				"weapon",
+				"weapon_factory	(local, instance)"
+			],
+			[
+				"wea",
+				"weapon_hit_chance	(local, instance)"
+			],
+			[
+				"weapo",
+				"weapon_stamina	(local, instance)"
+			],
+			[
+				"knig",
+				"knight_stamina	(local, instance)"
+			],
+			[
+				"weap",
+				"weapon_data	(local, instance)"
+			],
+			[
+				"no",
+				"None"
+			],
+			[
+				"kn",
+				"knight"
+			],
+			[
+				"knih",
+				"knight_factory	(global, function)"
+			],
+			[
+				"class",
+				"class	New Class"
+			],
+			[
+				"set",
+				"setattr	(builtin, function)"
+			],
+			[
+				"cla",
+				"classdef	C++ class template"
+			],
+			[
+				"count",
+				"Countdown"
+			],
+			[
+				"draw",
+				"draw_active"
+			],
+			[
+				"if",
+				"ifmain	if __name__ == '__main__'"
+			],
+			[
+				"on",
+				"ones"
+			],
+			[
+				"wait",
+				"Waitressing"
+			],
+			[
+				"rep",
+				"repCount"
+			],
+			[
+				"buf",
+				"bufferGrowSize"
+			],
+			[
+				"Rep",
+				"repCount"
+			],
+			[
+				"s",
+				"size"
+			],
+			[
+				"buff",
+				"buffer"
+			],
+			[
+				"las",
+				"lastChar"
+			],
+			[
+				"eo",
+				"eofReached"
+			],
+			[
+				"buffer",
+				"bufferGrowOffset"
+			],
+			[
+				"bufferG",
+				"bufferGrowOffset"
+			],
+			[
+				"put",
+				"putBuffer"
+			],
+			[
+				"la",
+				"lastChar"
+			],
+			[
+				"push",
+				"push_back"
+			],
+			[
+				"de",
+				"deque"
+			],
+			[
+				"ge",
+				"getBuffer"
+			],
+			[
+				"last",
+				"last"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "pree.py",
+			"settings":
+			{
+				"buffer_size": 12345,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"command_palette":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"user",
+				"Preferences: Settings - User"
+			],
+			[
+				"settings",
+				"Preferences: Settings - Default"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"disabe",
+				"Package Control: Disable Package"
+			],
+			[
+				"disabl",
+				"Package Control: Disable Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"dis",
+				"Package Control: Disable Package"
+			],
+			[
+				"disab",
+				"Package Control: Disable Package"
+			],
+			[
+				"disable",
+				"Package Control: Disable Package"
+			],
+			[
+				"enabl",
+				"Package Control: Enable Package"
+			],
+			[
+				"packag",
+				"Package Control: Disable Package"
+			],
+			[
+				"sublimelinter",
+				"SublimeLinter: Disable Linting"
+			],
+			[
+				"linter",
+				"SublimeLinter: Disable Linting"
+			],
+			[
+				":",
+				":w - Save"
+			],
+			[
+				"pack",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				":2",
+				"SublimeREPL: Python - Sublime Text 2"
+			],
+			[
+				":q",
+				"Set Syntax: SQL (Rails)"
+			],
+			[
+				":qa",
+				"Set Syntax: SQL (Rails)"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"show",
+				"Show TODOs: Project and open files"
+			],
+			[
+				"test",
+				"File: Open In Browser - Testing Server"
+			],
+			[
+				":W",
+				":w - Save"
+			],
+			[
+				"commit",
+				"Git: Commit"
+			],
+			[
+				"pyth",
+				"SublimeREPL: Python"
+			],
+			[
+				"py",
+				"SublimeREPL: Python"
+			],
+			[
+				"python",
+				"SublimeREPL: Python"
+			],
+			[
+				"repl",
+				"SublimeREPL: Python"
+			],
+			[
+				"pytho",
+				"SublimeREPL: Python"
+			],
+			[
+				"renam",
+				"Rope Refactoring: Rename"
+			],
+			[
+				":$",
+				":$ - EOF"
+			],
+			[
+				"rena",
+				"Rope Refactoring: Rename"
+			],
+			[
+				"rename",
+				"Rope Refactoring: Rename"
+			],
+			[
+				"rope",
+				"Rope: Regenerate Project Cache"
+			],
+			[
+				"Snippet: ",
+				"Snippet: New Class"
+			],
+			[
+				"refact",
+				"Rope Refactoring: Rename"
+			],
+			[
+				"package",
+				"Package Control: Enable Package"
+			],
+			[
+				"gist",
+				"Gist: Insert Gist"
+			],
+			[
+				"gists",
+				"Gist: Insert Gist"
+			],
+			[
+				"got",
+				"Rope: Go to Definition"
+			],
+			[
+				"goto",
+				"Rope: Go to Definition"
+			],
+			[
+				"rope got",
+				"Rope: Go to Definition"
+			],
+			[
+				"rope rege",
+				"Rope: Regenerate Project Cache"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"rever",
+				"File: Revert"
+			],
+			[
+				"repl pyt",
+				"SublimeREPL: Python"
+			],
+			[
+				"settings synta",
+				"Preferences: Alignment File Settings – Syntax Specific – User"
+			],
+			[
+				"syntax spec",
+				"Preferences: Alignment File Settings – Syntax Specific – User"
+			],
+			[
+				"pre synta",
+				"Preferences: Alignment File Settings – Syntax Specific – User"
+			],
+			[
+				"prefer",
+				"Preferences: Settings - Default"
+			],
+			[
+				"sublimerep",
+				"SublimeREPL: Python"
+			],
+			[
+				"repl py",
+				"SublimeREPL: Python"
+			],
+			[
+				"rep",
+				"SublimeREPL: Python"
+			],
+			[
+				"",
+				":$ - EOF"
+			],
+			[
+				"setting",
+				"Preferences: Settings - User"
+			],
+			[
+				"publi",
+				"Gist: Create Public Gist"
+			],
+			[
+				"keyb",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"gist ",
+				"Gist: Add File to Gist"
+			],
+			[
+				"settings user",
+				"Preferences: Settings - User"
+			],
+			[
+				"sett",
+				"Preferences: Settings - Default"
+			],
+			[
+				"seting",
+				"Preferences: Settings - User"
+			],
+			[
+				":wq",
+				"Bracket Highlighter: Swap Quotes"
+			],
+			[
+				"jump",
+				"Rope: Jump To Global"
+			],
+			[
+				"up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"mark",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				"url",
+				"Open all URLs"
+			],
+			[
+				"1",
+				"Rot13 Selection"
+			],
+			[
+				"add",
+				"Project: Add Folder"
+			],
+			[
+				"rope new",
+				"Rope: New Project"
+			],
+			[
+				"project",
+				"Project: Close"
+			],
+			[
+				"proj",
+				"Rope: New Project"
+			],
+			[
+				"xiki",
+				"Create Xiki Buffer"
+			],
+			[
+				"create x",
+				"Create Xiki Buffer"
+			],
+			[
+				"xi",
+				"Create Xiki Buffer"
+			],
+			[
+				"gis",
+				"Gist: Open Gist"
+			],
+			[
+				"pub",
+				"Gist: Create Public Gist"
+			],
+			[
+				"public",
+				"Gist: Create Public Gist"
+			],
+			[
+				"public ",
+				"Gist: Create Public Gist"
+			],
+			[
+				"upda",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Enable Package"
+			],
+			[
+				"syntax py",
+				"Set Syntax: Python"
+			],
+			[
+				"sublimerepl:p",
+				"SublimeREPL: Python"
+			],
+			[
+				"syntax",
+				"Set Syntax: C++"
+			]
+		],
+		"width": 434.0
+	},
+	"console":
+	{
+		"height": 106.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/H/git/pyrrhic-ree/ReeController/Expression",
+		"/H/git/pyrrhic-ree/images/logo.png",
+		"/H/git/pyrrhic-ree/ree/__init__.py",
+		"/C/Users/bearbear/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/bearbear/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/H/git/pyrrhic-ree/pyrrhic-ree.sublime-project",
+		"/H/git/pyrrhic-ree/pree.py",
+		"/H/git/pyrrhic-ree/ree.sublime-project",
+		"/C/Users/bearbear/Dropbox/OSM/Engineering/Online Sheet Music Viewer.app/Contents/Resources/standard.enm",
+		"/C/Program Files/Freehand Systems/Editor 2.1.0.184/Program/standard.enm",
+		"/C/Users/bearbear/Desktop/testbed/pdf2bmp.bat",
+		"/C/Users/bearbear/Desktop/testbed/RipIt.bat",
+		"/C/Users/bearbear/Desktop/g.cpp",
+		"/C/Users/bearbear/Downloads/TimeOnTask.numbers",
+		"/H/Simucom/Subtaneous/source/transmission_data_serializer_tests.rst",
+		"/H/Simucom/Subtaneous/source/conf.py",
+		"/H/Simucom/Subtaneous/conf",
+		"/H/Simucom/Subtaneous/conf.py",
+		"/H/Simucom/Subtaneous/test.py",
+		"/H/Simucom/Subtaneous/requirements.txt",
+		"/H/Simucom/Subtaneous/connection_pool.py",
+		"/H/Simucom/Subtaneous/unit_tests/connection_pool_tests.py",
+		"/H/Simucom/Subtaneous/connection.py",
+		"/H/Simucom/Subtaneous/transmission_data.py",
+		"/H/Simucom/Subtaneous/README.md",
+		"/H/Simucom/Subtaneous/tester.py",
+		"/H/Simucom/Subtaneous/transmission_data_serializer.py",
+		"/H/Simucom/Subtaneous/unit_tests/transmission_data_serializer_tests.py",
+		"/H/Simucom/Subtaneous/.travis.yml",
+		"/C/Users/bearbear/Downloads/pdf2bmp.bat",
+		"/H/Simucom/Subtaneous/source/tester.rst",
+		"/H/Simucom/Subtaneous/source/transmission_data_serializer.rst",
+		"/H/Simucom/Subtaneous/source/index.rst",
+		"/H/Simucom/Subtaneous/.gitignore",
+		"/H/Simucom/Subtaneous/qed0zcdz.2qe.txt",
+		"/H/Simucom/Subtaneous/source/transmission_data.rst",
+		"/H/Simucom/Subtaneous/subtaneous.sublime-project",
+		"/H/Simucom/Subtaneous/transmission_data.rst",
+		"/H/Simucom/Subtaneous/docs/conf.py",
+		"/H/Simucom/Subtaneous/docs/transmission_data.rst",
+		"/H/Simucom/Subtaneous/docs/index.rst",
+		"/H/Simucom/Subtaneous/index.rst",
+		"/C/Users/bearbear/Downloads/connection-andreas.py",
+		"/H/Simucom/Subtaneous/make.bat",
+		"/H/Simucom/Subtaneous/test_trans_data_serializer.py",
+		"/H/Simucom/Subtaneous/unit_tests/__init__.py",
+		"/C/Users/bearbear/Desktop/quick.py",
+		"/H/Simucom/Subtaneous/connection_data_serializer.py",
+		"/H/Simucom/Subtaneous/connection_data.py",
+		"/H/Simucom/Subtaneous/connectionpool.py",
+		"/H/subtaneous/ntvkn5ru.kgy.txt",
+		"/H/subtaneous/x3045gcb.xwy.txt",
+		"/H/subtaneous/4us23ojd.gki.txt",
+		"/H/subtaneous/wseb4sun.s5l.txt",
+		"/H/subtaneous/subtaneous.sublime-project",
+		"/C/Users/bearbear/AppData/Roaming/Sublime Text 2/Packages/User/JSON.sublime-settings",
+		"/C/Users/bearbear/Desktop/snow.py",
+		"/C/Users/bearbear/Desktop/tmp.py",
+		"/C/Users/bearbear/Dropbox/Architecture/Lab 4/tests/branc.ass",
+		"/C/Users/bearbear/Dropbox/Architecture/Lab 4/tests/branch.mips",
+		"/C/Users/bearbear/Dropbox/Architecture/Lab 4/tests/branch",
+		"/C/Users/bearbear/Dropbox/Architecture/Lab 4/tests/lw.assembled",
+		"/C/Users/bearbear/Dropbox/school/fall_2012/OO/search_engine/periodic.txt",
+		"/C/Users/bearbear/Dropbox/school/fall_2012/OO/search_engine/film.txt",
+		"/C/Users/bearbear/Dropbox/school/fall_2012/OO/search_engine/video.txt",
+		"/C/Users/bearbear/Dropbox/school/fall_2012/OO/search_engine/book.txt",
+		"/C/Users/bearbear/Dropbox/school/fall_2012/OO/search_engine/book.py",
+		"/C/Users/bearbear/Dropbox/school/fall_2012/OO/search_engine/leven.py",
+		"/C/Users/bearbear/Dropbox/school/fall_2012/OO/search_engine/movie.py",
+		"/home/bearbear/Dropbox/school/fall_2012/OO/leven/ ./media.py",
+		"/home/bearbear/Dropbox/school/fall_2012/OO/leven/leven.sublime-workspace",
+		"/home/bearbear/Dropbox/school/fall_2012/OO/leven/leven.sublime-project",
+		"/home/bearbear/.config/sublime-text-2/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/bearbear/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
+		"/home/bearbear/.ssh/id_rsa.pub",
+		"/home/bearbear/Dropbox/school/fall_2012/OO/pyjoust/pyjoust_main.py",
+		"/home/bearbear/Dropbox/school/fall_2012/OO/pyjoust/joust.py",
+		"/home/bearbear/.config/sublime-text-2/Packages/User/Python.sublime-settings",
+		"/home/bearbear/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/bearbear/Dropbox/school/fall_2012/OO/pyjoust/knight_factory.py",
+		"/home/bearbear/Dropbox/school/fall_2012/OO/pyjoust/pyjoust.sublime-project",
+		"/home/bearbear/Dropbox/school/fall_2012/OO/pyjoust/fact.py",
+		"/home/bearbear/.config/sublime-text-2/Packages/User/JSON.sublime-settings",
+		"/home/bearbear/.config/sublime-text-2/Packages/SublimeREPL/SublimeREPL.sublime-settings",
+		"/home/bearbear/Dropbox/school/fall_2012/OO/pyjoust/pyjoust.sublime-workspace",
+		"/home/bearbear/Dropbox/Sublime-Settings/Packages/Python/New-Class.sublime-snippet",
+		"/home/bearbear/test.cpp",
+		"/home/bearbear/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/bearbear/Dropbox/subtaneous_workbench/twisted-intro/basic-twisted/hello.py",
+		"/home/bearbear/Dropbox/subtaneous_workbench/twisted-intro/basic-twisted/simple-poll.py",
+		"/home/bearbear/Dropbox/subtaneous_workbench/twisted-myfiles/first_reactor.py",
+		"/home/bearbear/Dropbox/subtaneous_workbench/twisted-intro/async-client/get-poetry.py",
+		"/home/bearbear/.config/sublime-text-2/Packages/SublimeRope/README.markdown",
+		"/home/bearbear/Dropbox/subtaneous_workbench/twisted-intro/blocking-server/slowpoetry.py",
+		"/home/bearbear/Dropbox/subtaneous_workbench/twisted-intro/basic-twisted/countdown.py",
+		"/home/bearbear/Dropbox/subtaneous_workbench/.ropeproject/history",
+		"/home/bearbear/Dropbox/subtaneous_workbench/.ropeproject/objectdb",
+		"/home/bearbear/Dropbox/subtaneous_workbench/p2p.sublime-project",
+		"/home/bearbear/.config/sublime-text-2/Packages/Subtaneous/Subtaneous.pyc",
+		"/media/STORAGE/checkio/number_to_words.py",
+		"/home/bearbear/.config/sublime-text-2/Packages/Gist/Gist.sublime-settings",
+		"/home/bearbear/.config/sublime-text-2/Packages/User/Gist.sublime-settings",
+		"/home/bearbear/Downloads/other.txt",
+		"/home/bearbear/.config/sublime-text-2/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/media/STORAGE/checkio/cypher_grid.py",
+		"/home/bearbear/.config/sublime-text-2/Packages/SublimeLinter/README.md",
+		"/home/bearbear/.config/sublime-text-2/Packages/BracketHighlighter/BracketHighlighter.sublime-settings",
+		"/home/bearbear/.config/sublime-text-2/Packages/User/BracketHighlighter.sublime-settings",
+		"/C/Users/bearbear/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/bearbear/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/bearbear/AppData/Roaming/Sublime Text 2/Packages/User/SublimeREPL.sublime-settings",
+		"/C/Users/bearbear/AppData/Roaming/Sublime Text 2/Packages/SublimeREPL/SublimeREPL.sublime-settings",
+		"/H/checkio/checkio.sublime-workspace",
+		"/C/Users/bearbear/AppData/Roaming/Sublime Text 2/Packages/BracketHighlighter/BracketHighlighter.sublime-settings",
+		"/C/Users/bearbear/AppData/Roaming/Sublime Text 2/Packages/User/BracketHighlighter.sublime-settings",
+		"/C/Users/bearbear/Desktop/throwaway.cpp",
+		"/C/Users/bearbear/Desktop/solr.xml",
+		"/C/Users/bearbear/Desktop/web.xml",
+		"/C/Users/bearbear/Desktop/solr..xml",
+		"/C/Program Files/Apache Software Foundation/Tomcat 6.0/conf/Catalina/localhost/solr..xml",
+		"/C/Program Files/Apache Software Foundation/Tomcat 6.0/conf/server.xml",
+		"/C/Users/bearbear/Downloads/apache-solr-3.6.1/README.txt",
+		"/C/Users/bearbear/Desktop/Tutorial/Projects.net",
+		"/home/bearbear/school/fall_2012/oo/str_replace/test.html",
+		"/home/bearbear/school/fall_2012/oo/str_replace/Makefile",
+		"/home/bearbear/school/fall_2012/oo/str_replace/strlib.cpp",
+		"/home/bearbear/school/fall_2012/oo/str_replace/strlib.h",
+		"/home/bearbear/school/hkl/$"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 92.0,
+		"where_history":
+		[
+			"",
+			".",
+			"/home/bearbear/Dropbox/subtaneous_workbench/p2p"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"compile_obj",
+			"refactor",
+			"remove",
+			"whitespace",
+			"toggled",
+			"Refactor",
+			"print",
+			"self",
+			"toggled",
+			"checkChange",
+			"Refactor",
+			"activated",
+			"self",
+			"time()",
+			"TODO",
+			"Subtaneous 1",
+			"1",
+			"Subtaneous",
+			"1",
+			"Subtaneous",
+			"Subtaneous 1",
+			"autodoc",
+			"both",
+			"content",
+			"auto",
+			"autoclass_content",
+			"TransmissionDataSerializer",
+			"_TransmissionData",
+			"(object)",
+			"TransmissionData",
+			"Barrett Pardeep Andreas Jon",
+			"Barrett Pardeep Andreas Jo",
+			"show_",
+			"show",
+			"==",
+			"sys.path",
+			"testSuit",
+			"None",
+			"GenerateString",
+			"not",
+			"None",
+			"== None",
+			"time",
+			"time\\()",
+			"time()",
+			"time\\()",
+			"time()",
+			"object_hook",
+			"obj_hook",
+			"...",
+			">>>",
+			"firstKnight",
+			"0",
+			"beq",
+			", ",
+			"0",
+			"term",
+			"print",
+			"'",
+			"',",
+			"'",
+			"the",
+			"|",
+			"cnumber,\n                 title,\n                 subjects,\n                 description,\n                 distributor,\n                 notes,\n                 series,\n                 la",
+			"result",
+			"|",
+			"Stacks",
+			"Kurt",
+			" \"\"",
+			" =",
+			"self",
+			"knight",
+			"Knight",
+			"knight",
+			"stam",
+			"weap",
+			"_stam",
+			"_weap",
+			"d",
+			"Knight",
+			"Weapon",
+			"trim",
+			"white",
+			"rows",
+			"addr",
+			"font",
+			"iface",
+			"import",
+			"\n",
+			"dd",
+			"])\n",
+			"sublimerepl",
+			"repl",
+			"comma",
+			",,",
+			"connector",
+			"uri",
+			"if",
+			"push_back",
+			"fs3",
+			"fs2",
+			"fs",
+			"cout",
+			"<= state",
+			"state",
+			"<= state",
+			"state <",
+			"buffer.push_back",
+			"buffer.pop_front();",
+			"buffer.push_back",
+			"philosophy",
+			"Wextra",
+			"cout",
+			"ss",
+			"i < state",
+			"bufferGrowSize",
+			"newStr",
+			"g",
+			"iostream",
+			"const",
+			"-Wall -pedantic-errors -Wextra",
+			"const",
+			"-Werror",
+			"stream",
+			"char * const",
+			"Strlib",
+			"main",
+			"g"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"_TransmissionDataSerializer",
+			"TransmissionData",
+			"_TransmissionData",
+			"Simucom",
+			"testSuite",
+			"'"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "pree.py",
+					"settings":
+					{
+						"buffer_size": 12345,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10407,
+								10407
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": false,
+							"sublimelinter_mark_style": "outline",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1008.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 36.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"output.git":
+	{
+		"height": 84.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"pre",
+				"pree.py"
+			],
+			[
+				"requ",
+				"requirements.txt"
+			],
+			[
+				".git",
+				".gitignore"
+			],
+			[
+				"transmission_data",
+				"transmission_data_serializer.py"
+			],
+			[
+				"transmission",
+				"unit_tests/transmission_data_serializer_tests.py"
+			],
+			[
+				"tester",
+				"tester.py"
+			],
+			[
+				".tr",
+				".travis.yml"
+			],
+			[
+				"connectio",
+				"unit_tests/connection_pool_tests.py"
+			],
+			[
+				"connecti",
+				"connection.py"
+			],
+			[
+				"connec",
+				"connection_pool.py"
+			],
+			[
+				"seralizer",
+				"transmission_data_serializer.py"
+			],
+			[
+				"transmissiond",
+				"transmission_data.py"
+			],
+			[
+				"conn",
+				"unit_tests/connection_pool_tests.py"
+			],
+			[
+				"rea",
+				"README.md"
+			],
+			[
+				"unit_",
+				"unit_tests/transmission_data_serializer_tests.py"
+			],
+			[
+				"unit_test",
+				"unit_tests/transmission_data_serializer_tests.py"
+			],
+			[
+				"trans",
+				"transmission_data.py"
+			],
+			[
+				"transm",
+				"transmission_data_serializer.py"
+			],
+			[
+				"connection",
+				"connection_pool.py"
+			],
+			[
+				"transmis",
+				"transmission_data_serializer.py"
+			],
+			[
+				"tests",
+				"unit_tests/transmission_data_serializer_tests.py"
+			],
+			[
+				"sublime",
+				"subtaneous.sublime-project"
+			],
+			[
+				"conf",
+				"conf.py"
+			],
+			[
+				"conf.py",
+				"conf.py"
+			],
+			[
+				"index.",
+				"index.rst"
+			],
+			[
+				".rst",
+				"index.rst"
+			],
+			[
+				"transmiss",
+				"transmission_data.py"
+			],
+			[
+				"tran",
+				"unit_tests/transmission_data_serializer_tests.py"
+			],
+			[
+				"test",
+				"test.py"
+			],
+			[
+				"ser",
+				"transmission_data_serializer.py"
+			],
+			[
+				"subt",
+				"subtaneous.sublime-project"
+			],
+			[
+				"stre",
+				"stree.py"
+			],
+			[
+				"mai",
+				"main.py"
+			],
+			[
+				"leve",
+				"leven.py"
+			],
+			[
+				"per",
+				"periodic.txt"
+			],
+			[
+				"film.t",
+				"film.txt"
+			],
+			[
+				"video.t",
+				"video.txt"
+			],
+			[
+				"vide",
+				"video.py"
+			],
+			[
+				"book",
+				"book.txt"
+			],
+			[
+				"boo",
+				"book.py"
+			],
+			[
+				"pyj",
+				"pyjoust_main.py"
+			],
+			[
+				"jou",
+				"joust.py"
+			],
+			[
+				"joust",
+				"joust.py"
+			],
+			[
+				"kn",
+				"knight_factory.py"
+			],
+			[
+				"get",
+				"twisted-intro/twisted-client-1/get-poetry.py"
+			],
+			[
+				"count",
+				"twisted-intro/basic-twisted/countdown.py"
+			],
+			[
+				"hello",
+				"twisted-intro/basic-twisted/hello.py"
+			],
+			[
+				"simplep",
+				"twisted-intro/basic-twisted/simple-poll.py"
+			],
+			[
+				"client",
+				"twisted-intro/async-client/get-poetry.py"
+			],
+			[
+				"slow",
+				"twisted-intro/blocking-server/slowpoetry.py"
+			],
+			[
+				"strlib",
+				"LilBearFiles/str_replace/strlib.cpp"
+			],
+			[
+				"te",
+				"test.txt"
+			],
+			[
+				"tes",
+				"test.txt"
+			],
+			[
+				"make",
+				"Makefile"
+			],
+			[
+				"main.cpp",
+				"main.cpp"
+			],
+			[
+				"str",
+				"strlib.cpp"
+			],
+			[
+				"ma",
+				"main.cpp"
+			],
+			[
+				"strl",
+				"strlib.h"
+			],
+			[
+				"",
+				"/home/bearbear/school/fall_2012/oo/main.cpp"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"junk",
+				"/C/Users/bearbear/Dropbox/JUNK/shipping.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 251.0,
+	"status_bar_visible": true
+}
