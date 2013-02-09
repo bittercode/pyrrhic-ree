@@ -28,3 +28,6 @@ pip-log.txt
 
 #Kdevelop
 .kdev4
+
+#sublime text generated files
+*.sublime-*

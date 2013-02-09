@@ -118,14 +118,17 @@ class MyForm(QtGui.QMainWindow):
             self.ui.gbReg.setStyleSheet(r'QGroupBox{font-weight: normal; color: black;}')
             self.ui.gbReg.setTitle('Regular Expression Pattern')
 
+  # refactor
     def regChange(self):
         self.regex = self.ui.tedReg.toPlainText()
         self.process_regex()
 
+  # refactor  
     def strChange(self):
         self.matchstring = self.ui.tedString.toPlainText()
         self.process_regex()
-
+  
+  # refactor  
     def repChange(self):
         self.replace = self.ui.tedReplace.toPlainText()
         self.process_regex()
@@ -182,16 +185,22 @@ class MyForm(QtGui.QMainWindow):
         self.ui.tebRepAll.setHtml("")
         self.ui.statusbar.clearMessage()
 
+  # refactor
     def process_regex(self):
+    #  if not valid clear and exit func
         if not self.regex or not self.matchstring:
             self.clear_results()
             return
 
+    #  if paused do nothing
         if self.is_paused:
             return
-
+     
+    #  find all embeded flags
         self.process_embedded_flags(self.regex)
 
+    #  check for the replacement and then 
+    #  do the subs - both all subs and just first
         if self.replace:
             repl = re.sub(self.regex, self.replace, self.matchstring, 0, self.flags)
             repl1 = re.sub(self.regex, self.replace, self.matchstring, 1, self.flags)
@@ -199,7 +208,7 @@ class MyForm(QtGui.QMainWindow):
             self.ui.tebRepAll.setText(repl)
             self.ui.tebRep1.setText(repl1)
 
-        compile_obj = re.compile(self.regex, self.flags)
+    #  The regex should always be compiled.
         allmatches = compile_obj.findall(self.matchstring)
 
         #This is a big change I"m not updating the spinner
@@ -252,7 +261,8 @@ class MyForm(QtGui.QMainWindow):
 
         #print(group_tuples)
         self.populate_group_textbrowser(group_tuples)
-
+  
+  #refactor    
     def findAllSpans(self, compile_obj):
         spans = []
 
@@ -292,6 +302,7 @@ class MyForm(QtGui.QMainWindow):
 
         self.ui.tebMatch.setHtml(pre + self.highlightStart + match + self.highlightEnd + post)
 
+    #refactor  
     def process_embedded_flags(self, regex):
         # determine if the regex contains embedded regex flags.
         # if not, return 0 -- inidicating that the regex has no embedded flags
