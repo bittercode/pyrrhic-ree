@@ -18,10 +18,8 @@ def open_library():
     url = "http://docs.python.org/{}/library/re.html".format(version)
     open_doc(url)
 
+
 def open_guide():
     version = get_version()
     url = "http://docs.python.org/{}/howto/regex.html".format(version)
     open_doc(url)
-
-
-
