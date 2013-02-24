@@ -31,3 +31,6 @@ pip-log.txt
 
 #sublime text generated files
 *.sublime-*
+
+#rope project files
+.ropeproject
