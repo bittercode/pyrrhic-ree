@@ -121,7 +121,6 @@ class MyForm(QtGui.QMainWindow):
         self.regex = self.ui.tedReg.toPlainText()
         self.process_regex()
 
-
     def strChange(self):
         self.matchstring = self.ui.tedString.toPlainText()
         self.process_regex()
