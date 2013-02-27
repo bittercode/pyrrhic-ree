@@ -193,8 +193,8 @@ class MyForm(QtGui.QMainWindow):
         self.process_embedded_flags(self.regex)
 
         if self.replace:
-            repl = re.sub(self.regex,self.replace,self.matchstring,0,self.flags)
-            repl1 = re.sub(self.regex,self.replace,self.matchstring,1,self.flags)
+            repl = re.sub(self.regex, self.replace, self.matchstring, 0, self.flags)
+            repl1 = re.sub(self.regex, self.replace, self.matchstring, 1, self.flags)
             print('REPL: ', repl)
             self.ui.tebRepAll.setText(repl)
             self.ui.tebRep1.setText(repl1)
@@ -204,14 +204,14 @@ class MyForm(QtGui.QMainWindow):
 
         #This is a big change I"m not updating the spinner
         if allmatches and len(allmatches):
-            match_index = len(allmatches) -1
+            match_index = len(allmatches) - 1
             print('MatchIndex: ' + str(match_index))
 
         match_obj = compile_obj.search(self.matchstring)
         if match_obj is None:
             self.ui.tebMatch.setPlainText("No Match")
             self.ui.tebMatchAll.setPlainText("No Match")
-            self.ui.statusbar.showMessage("No Match",0)
+            self.ui.statusbar.showMessage("No Match", 0)
         else:
             #This is the single match
             self.populate_match_textbrowser(match_obj.start(), match_obj.end())
@@ -291,7 +291,6 @@ class MyForm(QtGui.QMainWindow):
             post = self.matchstring[endpos:]
 
         self.ui.tebMatch.setHtml(pre + self.highlightStart + match + self.highlightEnd + post)
-
 
     def process_embedded_flags(self, regex):
         # determine if the regex contains embedded regex flags.
