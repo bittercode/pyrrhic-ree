@@ -10,9 +10,10 @@
 import sys
 import re
 import os
+import types
 
 try:
-    from PyQt4 import QtGui
+    from PyQt4 import QtGui, QtCore
 except:
     print("Could not locate the PyQt4 module.")
     sys.exit(1)
@@ -167,12 +168,11 @@ class MyForm(QtGui.QMainWindow):
             else:
                 result = self.highlightStart + text[span[0]:span[1]] + self.highlightEnd
 
-        idx = span[1]
-        disp = disp + result
+            idx = span[1]
+            disp = disp + result
         disp = disp + text[idx:]
 
         self.ui.tebMatchAll.setHtml(disp)
-
 
     def clear_results(self):
         self.ui.tebMatch.setHtml("")
@@ -239,16 +239,16 @@ class MyForm(QtGui.QMainWindow):
                 for key in keys:
                     group_nums[compile_obj.groupindex[key]] = key
 
-        #Here I build a tuple of tuples - with each group match
-        #it is match number, group number, name and then the match
-        for x in range(match_index):
-            g = allmatches[x]
-            if isinstance(g, tuple):
-                for i in range(len(g)):
-                    group_tuple = (x+1, i+1, group_nums.get(i+1, ""), g[i])
-                    group_tuples.append(group_tuple)
-            else:
-                group_tuples.append((x+1, 1, group_nums.get(1, ""), g))
+            #Here I build a tuple of tuples - with each group match
+            #it is match number, group number, name and then the match
+            for x in range(match_index):
+                g = allmatches[x]
+                if isinstance(g, tuple):
+                    for i in range(len(g)):
+                        group_tuple = (x+1, i+1, group_nums.get(i+1, ""), g[i])
+                        group_tuples.append(group_tuple)
+                else:
+                    group_tuples.append((x+1, 1, group_nums.get(1, ""), g))
 
         #print(group_tuples)
         self.populate_group_textbrowser(group_tuples)
