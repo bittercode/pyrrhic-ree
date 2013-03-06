@@ -32,10 +32,6 @@ from modules.mainWindow import *
 from modules.about import *
 from modules.urlDialog import *
 
-# regex to find special flags which must begin at beginning of line
-# or after some spaces
-EMBEDDED_FLAGS = r"^ *\(\?(?P<flags>[aiLmsx]*)\)"
-
 ###################################################################
 #
 # The Form class that builds the form and inserts logic
@@ -69,14 +65,9 @@ class MyForm(QtGui.QMainWindow):
         self.ui.chkLocale.toggled.connect(lambda: self.checkChange(re.LOCALE))
         self.ui.chkAscii.toggled.connect(lambda: self.checkChange(re.ASCII))
 
-        self.regex = ""
-        self.matchstring = ""
-        self.replace = ""
-        self.flags = 0
         self.is_paused = False
         self.debug = False
         self.group_tuples = None
-        self.embedded_flags_obj = re.compile(EMBEDDED_FLAGS)
 
         self.MNUMBER = self.tr("Match Number")
         self.GNUMBER = self.tr("Group Number")
@@ -98,8 +89,7 @@ class MyForm(QtGui.QMainWindow):
         the easiest way to handle them. XOR is used to toggle each flags bit on or
         off without the need for any logic.
         '''
-      controller.flags ^= toggledFlagValue
-        self.flags ^= toggledFlagValue
+        controller.flags ^= toggledFlagValue
         self.process_regex()
 
     def clickPause(self):
@@ -123,22 +113,16 @@ class MyForm(QtGui.QMainWindow):
             self.ui.gbReg.setStyleSheet(r'QGroupBox{font-weight: normal; color: black;}')
             self.ui.gbReg.setTitle('Regular Expression Pattern')
 
-  # refactor
     def regChange(self):
-    controller.regex = self.ui.tedReg.toPlainText()
-        self.regex = self.ui.tedReg.toPlainText()
+        controller.regex = self.ui.tedReg.toPlainText()
         self.process_regex()
 
-  # refactor
     def strChange(self):
-    controller.matchString = self.ui.tedString.toPlainText()
-        self.matchstring = self.ui.tedString.toPlainText()
+        controller.matchString = self.ui.tedString.toPlainText()
         self.process_regex()
 
-  # refactor
     def repChange(self):
-    controller.replaceString = self.ui.tedReplace.toPlainText()
-        self.replace = self.ui.tedReplace.toPlainText()
+        controller.replaceString = self.ui.tedReplace.toPlainText()
         self.process_regex()
 
     # The tuple holds two things - the group name and the contents of the match and I can count rows
@@ -170,7 +154,7 @@ class MyForm(QtGui.QMainWindow):
         idx = 0
         disp = ""
         result = ""
-        text = self.matchstring
+        text = controller.matchString
 
         for span in spans:
             if span[0] != 0:
@@ -193,40 +177,34 @@ class MyForm(QtGui.QMainWindow):
         self.ui.tebRepAll.setHtml("")
         self.ui.statusbar.clearMessage()
 
-  # refactor
-    def process_regex(self):
-    #  if not valid clear and exit func
-        if not self.regex or not self.matchstring:
-            self.clear_results()
-            return
+    def should_process_regex(self):
+        proceed = True
 
-    #  if paused do nothing
-        if self.is_paused:
-            return
+        print("TYPE:", type(controller))
+        if not controller.regex or not controller.matchString:
+            self.clear_results
+            proceed = False
 
-    #  find all embeded flags
-        self.process_embedded_flags(self.regex)
+        return proceed and not self.is_paused
 
-    #  check for the replacement and then
-    #  do the subs - both all subs and just first
-        if self.replace:
-            repl = re.sub(self.regex, self.replace, self.matchstring, 0, self.flags)
-            repl1 = re.sub(self.regex, self.replace, self.matchstring, 1, self.flags)
-            print('REPL: ', repl)
-            self.ui.tebRepAll.setText(repl)
-            self.ui.tebRep1.setText(repl1)
+    def processReplacements(self):
+        #  check for the replacement and then
+        #  do the subs - both all subs and just first
+        if controller.replaceString:
+            replaceAll = controller.replaceAll()
+            replaceFirst = controller.replaceArbitraryCount(1)
+            print('REPL: ', replaceAll)
+            self.ui.tebRepAll.setText(replaceAll)
+            self.ui.tebRep1.setText(replaceFirst)
 
-    #  The regex should always be compiled.
-    compile_obj = re.compile(self.regex, self.flags)
-
-        allmatches = compile_obj.findall(self.matchstring)
-
+    def processFindAll(self):
         #This is a big change I"m not updating the spinner
-        if allmatches and len(allmatches):
-            match_index = len(allmatches) - 1
-            print('MatchIndex: ' + str(match_index))
+        allMatches = controller.allMatches()
+        if allMatches:
+            print('MatchIndex:', len(allMatches)-1)
 
-        match_obj = compile_obj.search(self.matchstring)
+        match_obj = controller.search()
+
         if match_obj is None:
             self.ui.tebMatch.setPlainText("No Match")
             self.ui.tebMatchAll.setPlainText("No Match")
@@ -234,34 +212,34 @@ class MyForm(QtGui.QMainWindow):
         else:
             #This is the single match
             self.populate_match_textbrowser(match_obj.start(), match_obj.end())
+            #This will fill in all matches
+            #This is a big change I"m not updating the spinner
+            spans = controller.getSpans()
+            self.populate_matchAll_textbrowser(spans)
 
-    spans = controller.getSpans()
-        #This will fill in all matches
-        self.populate_matchAll_textbrowser(spans)
-
+    def processGroups(self):
         #This is the start of groups and right now it goes to the end of process_regex
         #It works right now as long as groups are not named - I think
-        print(compile_obj.groupindex)
+        print(controller.compiledRegex.groupindex)
 
-        match_index = len(allmatches)
+        allMatches = controller.allMatches()
+        match_obj = controller.search()
 
         group_tuples = []
 
-        if match_obj.groups():
-            num_groups = len(match_obj.groups())
-
+        if match_obj is not None and match_obj.groups():
             group_nums = {}
 
             #This creates a dictionary of group names
-            if compile_obj.groupindex:
-                keys = compile_obj.groupindex.keys()
+            if controller.compiledRegex.groupindex:
+                keys = controller.compiledRegex.groupindex.keys()
                 for key in keys:
-                    group_nums[compile_obj.groupindex[key]] = key
+                    group_nums[controller.compiledRegex.groupindex[key]] = key
 
             #Here I build a tuple of tuples - with each group match
             #it is match number, group number, name and then the match
-            for x in range(match_index):
-                g = allmatches[x]
+            for x in range(len(allMatches)):
+                g = allMatches[x]
                 if isinstance(g, tuple):
                     for i in range(len(g)):
                         group_tuple = (x+1, i+1, group_nums.get(i+1, ""), g[i])
@@ -272,67 +250,56 @@ class MyForm(QtGui.QMainWindow):
         #print(group_tuples)
         self.populate_group_textbrowser(group_tuples)
 
-    def findAllSpans(self, compile_obj):
-        spans = []
+    def process_regex(self):
+        if not self.should_process_regex():
+            print("DO NOT PROCESS")
+            return
+        else:
+            print("DO PROCESS")
 
-        match_obj = compile_obj.search(self.matchstring)
-        last_span = None
+        self.process_embedded_flags()
+        self.processReplacements()
+        self.processFindAll()
+        self.processGroups()
 
-        while match_obj:
-            start = match_obj.start()
-            end = match_obj.end()
-            span = (start, end)
-            if last_span == span:
-                break
-
-            spans.append(span)
-
-            last_span = span
-            match_obj = compile_obj.search(self.matchstring, end)
-
-        if self.debug:
-            print("FA Spans: ", spans)
-
-        return spans
     def populate_match_textbrowser(self, startpos, endpos):
         pre = post = match = ""
 
-        match = self.matchstring[startpos:endpos]
+        match = controller.matchString[startpos:endpos]
 
         # prepend the beginning that didn't match
         if startpos > 0:
-            pre = self.matchstring[0:startpos]
+            pre = controller.matchString[0:startpos]
 
         # append the end that didn't match
-        if endpos < len(self.matchstring):
-            post = self.matchstring[endpos:]
+        if endpos < len(controller.matchString):
+            post = controller.matchString[endpos:]
 
         self.ui.tebMatch.setHtml(pre + self.highlightStart + match + self.highlightEnd + post)
 
-    #refactor  
-    def process_embedded_flags(self, regex):
-        # determine if the regex contains embedded regex flags.
-    # if not, return False -- inidicating that the regex has no embedded flags
-        # if it does, set the appropriate checkboxes on the UI to reflect the flags that are embedded
-    #   and return True to indicate that the string has embedded flags
-    flags = controller.embeddedFlags()
+    def process_embedded_flags(self):
+        #  determine if the regex contains embedded regex flags.
+        #  if not, return False -- inidicating that the regex has no embedded flags
+        #  if it does, set the appropriate checkboxes on the UI to reflect the flags that are embedded
+        #  and return True to indicate that the string has embedded flags
+        flags = controller.embeddedFlags()
 
-    for flag in flags:
-      if flag == 'i':
-        self.ui.chkCase.setChecked(True)
-      elif flag == 'L':
-        self.ui.chkLocale.setChecked(True)
-      elif flag == 'm':
-        self.ui.chkMulti.setChecked(True)
-      elif flag == 's':
-        self.ui.chkDot.setChecked(True)
-      elif flag == 'a':
-        self.ui.chkAscii.setChecked(True)
-      elif flag == 'x':
-        self.ui.chkVerbose.setChecked(True)
+        for flag in flags:
+            if flag == 'i':
+                self.ui.chkCase.setChecked(True)
+            elif flag == 'L':
+                self.ui.chkLocale.setChecked(True)
+            elif flag == 'm':
+                self.ui.chkMulti.setChecked(True)
+            elif flag == 's':
+                self.ui.chkDot.setChecked(True)
+            elif flag == 'a':
+                self.ui.chkAscii.setChecked(True)
+            elif flag == 'x':
+                self.ui.chkVerbose.setChecked(True)
 
-    #  Not sure where this is used yet
-    return True if flags else False
+        #  Not sure where this is used yet
+        return True if flags else False
 
     def urlImported(self, html):
         controller.matchString = html

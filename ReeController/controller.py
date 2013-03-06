@@ -17,10 +17,10 @@ class _ree:
     """
     def __init__(self):
         self._regex = ""
-        self._matchstring = ""
+        self._matchString = ""
         self._replaceString = ""
-        self.flags = 0
-        self.compiledRegex = re.compile(self._regex, self.flags)
+        self._flags = 0
+        self.compiledRegex = re.compile(self._regex, self._flags)
         self._flagChecker = re.compile(r"^ *\(\?(?P<flags>[aiLmsx]*)\)")
         self._debug = True
 
@@ -33,7 +33,7 @@ class _ree:
 
         def fset(self, value):
             self._regex = str(value)
-            self.compiledRegex = re.compile(self._regex, self.flags)
+            self.compiledRegex = re.compile(self._regex, self._flags)
         return locals()
     regex = property(**regex())
 
@@ -48,6 +48,20 @@ class _ree:
             self._matchString = str(value)
         return locals()
     matchString = property(**matchString())
+
+    #use a property to force compile on flag update
+    def flags():
+        doc = "The flags to be compiled with the regex"
+
+        def fget(self):
+            return self._flags
+
+        def fset(self, value):
+            self._flags = value
+            self.compiledRegex = re.compile(self._regex, self._flags)
+
+        return locals()
+    flags = property(**flags())
 
     #  use property to force new values to convert to strings
     def replaceString():
@@ -84,5 +98,21 @@ class _ree:
             print("FA Spans: ", spans)
 
         return spans
+
+    def replaceAll(self):
+        return self.replaceArbitraryCount(0)
+
+    def replaceArbitraryCount(self, count):
+        return self.compiledRegex.sub(
+            self._replaceString,
+            self._matchString,
+            count,
+        )
+
+    def allMatches(self):
+        return self.compiledRegex.findall(self.matchString)
+
+    def search(self):
+        return self.compiledRegex.search(self.matchString)
 
 Controller = _ree()
