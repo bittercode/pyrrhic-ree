@@ -23,6 +23,7 @@ class _ree:
         self.compiledRegex = re.compile(self._regex, self._flags)
         self._flagChecker = re.compile(r"^ *\(\?(?P<flags>[aiLmsx]*)\)")
         self._debug = True
+        self.updateView = lambda: None
 
     #  use property to force regex compile on set
     def regex():
@@ -34,6 +35,7 @@ class _ree:
         def fset(self, value):
             self._regex = str(value)
             self.compiledRegex = re.compile(self._regex, self._flags)
+            self.updateView()
         return locals()
     regex = property(**regex())
 
@@ -46,6 +48,7 @@ class _ree:
 
         def fset(self, value):
             self._matchString = str(value)
+            self.updateView()
         return locals()
     matchString = property(**matchString())
 
@@ -59,6 +62,7 @@ class _ree:
         def fset(self, value):
             self._flags = value
             self.compiledRegex = re.compile(self._regex, self._flags)
+            self.updateView()
 
         return locals()
     flags = property(**flags())
@@ -72,6 +76,7 @@ class _ree:
 
         def fset(self, value):
             self._replaceString = str(value)
+            self.updateView()
         return locals()
     replaceString = property(**replaceString())
 
@@ -109,10 +114,39 @@ class _ree:
             count,
         )
 
-    def allMatches(self):
-        return self.compiledRegex.findall(self.matchString)
-
     def search(self):
         return self.compiledRegex.search(self.matchString)
+
+    def getGroups(self):
+        '''
+        Returns all groups - Named or not - as a list of tuples.
+
+        The tuples contain the following format
+        t[0] match number (starting at 1 for first match)
+        t[1] group number (starting at 1 for first group)
+        t[2] group name (defaults to empty string for unamed group)
+        t[3] the matched string
+        '''
+        matches = self.compiledRegex.findall(self.matchString)
+        matchObj = self.search()
+
+        groupTuples = []
+
+        if matchObj is not None and matchObj.groups():
+            groupNames = {}
+
+            if self.compiledRegex.groupindex:
+                groupNames = {v: k for k, v in self.compiledRegex.groupindex.items()}
+
+            for x, group in enumerate(matches):
+                if isinstance(group, tuple):
+                    for i in range(len(group)):
+                        tmpGroup = (x+1, i+1, groupNames.get(i+1, ""), group[i])
+                        groupTuples.append(tmpGroup)
+                else:
+                    tmpTuple = (x+1, 1, groupNames.get(1, ""), group)
+                    groupTuples.append(tmpTuple)
+
+        return groupTuples
 
 Controller = _ree()

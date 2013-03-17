@@ -81,6 +81,8 @@ class MyForm(QtGui.QMainWindow):
         self.highlightStart = r'<span style="background-color: ' + self.highlightColor + r'">'
         self.highlightEnd = r'</span>'
 
+        controller.updateView = self.process_regex
+
     def checkChange(self, toggledFlagValue):
         '''
         Toggles the flags provided by the toggledFlagValue from the flag member.
@@ -90,7 +92,6 @@ class MyForm(QtGui.QMainWindow):
         off without the need for any logic.
         '''
         controller.flags ^= toggledFlagValue
-        self.process_regex()
 
     def clickPause(self):
 
@@ -115,15 +116,12 @@ class MyForm(QtGui.QMainWindow):
 
     def regChange(self):
         controller.regex = self.ui.tedReg.toPlainText()
-        self.process_regex()
 
     def strChange(self):
         controller.matchString = self.ui.tedString.toPlainText()
-        self.process_regex()
 
     def repChange(self):
         controller.replaceString = self.ui.tedReplace.toPlainText()
-        self.process_regex()
 
     # The tuple holds two things - the group name and the contents of the match and I can count rows
     def populate_group_textbrowser(self, tuples):
@@ -180,9 +178,8 @@ class MyForm(QtGui.QMainWindow):
     def should_process_regex(self):
         proceed = True
 
-        print("TYPE:", type(controller))
         if not controller.regex or not controller.matchString:
-            self.clear_results
+            self.clear_results()
             proceed = False
 
         return proceed and not self.is_paused
@@ -197,12 +194,7 @@ class MyForm(QtGui.QMainWindow):
             self.ui.tebRepAll.setText(replaceAll)
             self.ui.tebRep1.setText(replaceFirst)
 
-    def processFindAll(self):
-        #This is a big change I"m not updating the spinner
-        allMatches = controller.allMatches()
-        if allMatches:
-            print('MatchIndex:', len(allMatches)-1)
-
+    def processFind(self):
         match_obj = controller.search()
 
         if match_obj is None:
@@ -210,57 +202,18 @@ class MyForm(QtGui.QMainWindow):
             self.ui.tebMatchAll.setPlainText("No Match")
             self.ui.statusbar.showMessage("No Match", 0)
         else:
-            #This is the single match
-            self.populate_match_textbrowser(match_obj.start(), match_obj.end())
-            #This will fill in all matches
-            #This is a big change I"m not updating the spinner
             spans = controller.getSpans()
+            self.populate_match_textbrowser(match_obj.start(), match_obj.end())
             self.populate_matchAll_textbrowser(spans)
-
-    def processGroups(self):
-        #This is the start of groups and right now it goes to the end of process_regex
-        #It works right now as long as groups are not named - I think
-        print(controller.compiledRegex.groupindex)
-
-        allMatches = controller.allMatches()
-        match_obj = controller.search()
-
-        group_tuples = []
-
-        if match_obj is not None and match_obj.groups():
-            group_nums = {}
-
-            #This creates a dictionary of group names
-            if controller.compiledRegex.groupindex:
-                keys = controller.compiledRegex.groupindex.keys()
-                for key in keys:
-                    group_nums[controller.compiledRegex.groupindex[key]] = key
-
-            #Here I build a tuple of tuples - with each group match
-            #it is match number, group number, name and then the match
-            for x in range(len(allMatches)):
-                g = allMatches[x]
-                if isinstance(g, tuple):
-                    for i in range(len(g)):
-                        group_tuple = (x+1, i+1, group_nums.get(i+1, ""), g[i])
-                        group_tuples.append(group_tuple)
-                else:
-                    group_tuples.append((x+1, 1, group_nums.get(1, ""), g))
-
-        #print(group_tuples)
-        self.populate_group_textbrowser(group_tuples)
 
     def process_regex(self):
         if not self.should_process_regex():
-            print("DO NOT PROCESS")
             return
-        else:
-            print("DO PROCESS")
 
         self.process_embedded_flags()
         self.processReplacements()
-        self.processFindAll()
-        self.processGroups()
+        self.processFind()
+        self.populate_group_textbrowser(controller.getGroups())
 
     def populate_match_textbrowser(self, startpos, endpos):
         pre = post = match = ""
