@@ -124,7 +124,8 @@ class MyForm(QtGui.QMainWindow):
         controller.replaceString = self.ui.tedReplace.toPlainText()
 
     # The tuple holds two things - the group name and the contents of the match and I can count rows
-    def populate_group_textbrowser(self, tuples):
+    def populate_group_textbrowser(self):
+        tuples = controller.getGroups()
         self.ui.tebGroup.clear()
         row = 1
         result = (r'<table border=1 cellpadding=7 ><tr><th>' + self.MNUMBER + r'</th>' +
@@ -144,28 +145,30 @@ class MyForm(QtGui.QMainWindow):
 
         self.ui.tebGroup.setHtml(result)
 
-    def populate_matchAll_textbrowser(self, spans):
+    def populate_matchAll_textbrowser(self):
+        spans = controller.getSpans()
         self.ui.tebMatchAll.clear()
+
         if not spans:
             return
 
-        idx = 0
-        disp = ""
+        index = 0
+        displayText = ""
         result = ""
         text = controller.matchString
 
         for span in spans:
             if span[0] != 0:
-                result = (text[idx:span[0]] + self.highlightStart + text[span[0]:span[1]]
+                result = (text[index:span[0]] + self.highlightStart + text[span[0]:span[1]]
                           + self.highlightEnd)
             else:
                 result = self.highlightStart + text[span[0]:span[1]] + self.highlightEnd
 
-            idx = span[1]
-            disp = disp + result
-        disp = disp + text[idx:]
+            index = span[1]
+            displayText = displayText + result
+        displayText = displayText + text[index:]
 
-        self.ui.tebMatchAll.setHtml(disp)
+        self.ui.tebMatchAll.setHtml(displayText)
 
     def clear_results(self):
         self.ui.tebMatch.setHtml("")
@@ -202,9 +205,8 @@ class MyForm(QtGui.QMainWindow):
             self.ui.tebMatchAll.setPlainText("No Match")
             self.ui.statusbar.showMessage("No Match", 0)
         else:
-            spans = controller.getSpans()
-            self.populate_match_textbrowser(match_obj.start(), match_obj.end())
-            self.populate_matchAll_textbrowser(spans)
+            self.populate_match_textbrowser()
+            self.populate_matchAll_textbrowser()
 
     def process_regex(self):
         if not self.should_process_regex():
@@ -213,9 +215,12 @@ class MyForm(QtGui.QMainWindow):
         self.process_embedded_flags()
         self.processReplacements()
         self.processFind()
-        self.populate_group_textbrowser(controller.getGroups())
+        self.populate_group_textbrowser()
 
-    def populate_match_textbrowser(self, startpos, endpos):
+    def populate_match_textbrowser(self):
+        match_obj = controller.search()
+        startpos = match_obj.start()
+        endpos = match_obj.end()
         pre = post = match = ""
 
         match = controller.matchString[startpos:endpos]
@@ -269,20 +274,18 @@ class MyForm(QtGui.QMainWindow):
 
     def importFile(self):
 
-        fn = QtGui.QFileDialog.getOpenFileName(self, 'Import File', "All (*)",)
+        filename = QtGui.QFileDialog.getOpenFileName(self, 'Import File', "All (*)",)
 
-        if fn == "":
+        if filename == "":
             return None
 
-        filename = fn
-
         try:
-            fp = open(filename, "r")
+            inputfile = open(filename, "r")
         except:
             return None
 
-        data = fp.read()
-        fp.close()
+        data = inputfile.read()
+        inputfile.close()
         self.ui.tedString.setPlainText(data)
 
 if __name__ == "__main__":

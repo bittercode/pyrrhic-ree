@@ -34,7 +34,7 @@ class _ree:
 
         def fset(self, value):
             self._regex = str(value)
-            self.compiledRegex = re.compile(self._regex, self._flags)
+            self.compile()
             self.updateView()
         return locals()
     regex = property(**regex())
@@ -61,7 +61,7 @@ class _ree:
 
         def fset(self, value):
             self._flags = value
-            self.compiledRegex = re.compile(self._regex, self._flags)
+            self.compile()
             self.updateView()
 
         return locals()
@@ -148,5 +148,15 @@ class _ree:
                     groupTuples.append(tmpTuple)
 
         return groupTuples
+
+    def compile(self):
+        tmp = None
+        try:
+            tmp = re.compile(self._regex, self._flags)
+        except re.error:
+            if self._debug:
+                print("Incomplete Regex")
+        else:
+            self.compiledRegex = tmp
 
 Controller = _ree()
