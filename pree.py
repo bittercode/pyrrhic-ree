@@ -209,10 +209,10 @@ class MyForm(QtGui.QMainWindow):
             self.populate_matchAll_textbrowser()
 
     def process_regex(self):
+        self.process_embedded_flags()
+
         if not self.should_process_regex():
             return
-
-        self.process_embedded_flags()
         self.processReplacements()
         self.processFind()
         self.populate_group_textbrowser()
@@ -240,24 +240,22 @@ class MyForm(QtGui.QMainWindow):
         #  if not, return False -- inidicating that the regex has no embedded flags
         #  if it does, set the appropriate checkboxes on the UI to reflect the flags that are embedded
         #  and return True to indicate that the string has embedded flags
-        flags = controller.embeddedFlags()
+        flagSets = controller.embeddedFlags()
 
-        for flag in flags:
-            if flag == 'i':
-                self.ui.chkCase.setChecked(True)
-            elif flag == 'L':
-                self.ui.chkLocale.setChecked(True)
-            elif flag == 'm':
-                self.ui.chkMulti.setChecked(True)
-            elif flag == 's':
-                self.ui.chkDot.setChecked(True)
-            elif flag == 'a':
-                self.ui.chkAscii.setChecked(True)
-            elif flag == 'x':
-                self.ui.chkVerbose.setChecked(True)
-
-        #  Not sure where this is used yet
-        return True if flags else False
+        for flagSet, check in zip(flagSets, (True, False)):
+            for flag in flagSet:
+                if flag == 'i':
+                    self.ui.chkCase.setChecked(check)
+                elif flag == 'L':
+                    self.ui.chkLocale.setChecked(check)
+                elif flag == 'm':
+                    self.ui.chkMulti.setChecked(check)
+                elif flag == 's':
+                    self.ui.chkDot.setChecked(check)
+                elif flag == 'a':
+                    self.ui.chkAscii.setChecked(check)
+                elif flag == 'x':
+                    self.ui.chkVerbose.setChecked(check)
 
     def urlImported(self, html):
         controller.matchString = html

@@ -24,6 +24,7 @@ class _ree:
         self._flagChecker = re.compile(r"^ *\(\?(?P<flags>[aiLmsx]*)\)")
         self._debug = True
         self.updateView = lambda: None
+        self._flagSet = set()
 
     #  use property to force regex compile on set
     def regex():
@@ -81,8 +82,9 @@ class _ree:
     replaceString = property(**replaceString())
 
     def embeddedFlags(self):
-        match = self._flagChecker.match(self.regex)
-        return set(match.group('flags')) if match else set()
+        newFlagSet = set(match.group('flags')) if match else set()
+        self._flagSet, missingFlagSet = newFlagSet, self._flagSet - newFlagSet
+        return self._flagSet, missingFlagSet
 
     def getSpans(self):
         spans = []
