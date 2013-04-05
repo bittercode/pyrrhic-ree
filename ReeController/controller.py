@@ -143,7 +143,7 @@ class _ree:
             for x, group in enumerate(matches):
                 if isinstance(group, tuple):
                     for i in range(len(group)):
-                        tmpGroup = (x+1, i+1, groupNames.get(i+1, ""), group[i])
+                        tmpGroup = (x + 1, i + 1, groupNames.get(i + 1, ""), group[i])
                         groupTuples.append(tmpGroup)
                 else:
                     tmpTuple = (x+1, 1, groupNames.get(1, ""), group)
