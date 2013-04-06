@@ -82,6 +82,7 @@ class _ree:
     replaceString = property(**replaceString())
 
     def embeddedFlags(self):
+        match = self._flagChecker.match(self.regex)
         newFlagSet = set(match.group('flags')) if match else set()
         self._flagSet, missingFlagSet = newFlagSet, self._flagSet - newFlagSet
         return self._flagSet, missingFlagSet
